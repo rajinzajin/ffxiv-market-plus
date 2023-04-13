@@ -31,7 +31,7 @@
 	aria-label="Sidebar"
 >
 	<div class="h-full px-3 py-4 overflow-y-auto bg-primary pl-5">
-		<a href="https://flowbite.com/" class="mb-5 mt-3 w-full">
+		<a href="/" class="mb-5 mt-3 w-full">
 			<img
 				src="https://flowbite.com/docs/images/logo.svg"
 				class="h-20 mx-auto mt-8"
@@ -44,8 +44,8 @@
 		<ul class="space-y-2 font-medium text-xl mt-9">
 			<li>
 				<a
-					href="#"
-					class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+					href="/"
+					class="flex items-center p-2 bg-item text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
 				>
 					<svg
 						aria-hidden="true"
@@ -62,7 +62,7 @@
 			</li>
 			<li>
 				<a
-					href="#"
+					href="/data-centers"
 					class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
 				>
 					<svg
@@ -81,5 +81,4 @@
 		</ul>
 	</div>
 </aside>
-
 <slot />
