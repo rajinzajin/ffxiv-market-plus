@@ -4,67 +4,23 @@
 
 	onMount(async () => {
 		var res = await axios("/api/data-centers");
-		console.log(res.data);
+		// console.log(res.data);
 	});
 </script>
 
-<div class="p-10 sm:ml-64 bg-secondary">
-	<div class="grid grid-cols-3 gap-4 mb-4">
+<div class="px-6 py-8 bg-secondary">
+	<div class="grid grid-cols-1 gap-4 mb-4">
 		<div
-			class="flex items-center justify-center h-24 rounded bg-item"
+			class="h-100 p-5 w-1/3 max-w-full items-center justify-center rounded-2xl bg-item"
 		>
-		</div>
-		<div
-			class="flex items-center justify-center h-24 rounded bg-item"
-		>
-		</div>
-		<div
-			class="flex items-center justify-center h-24 rounded bg-item"
-		>
-		</div>
-	</div>
-	<div
-		class="flex items-center justify-center h-48 mb-4 rounded bg-item"
-	>
-	</div>
-	<div class="grid grid-cols-2 gap-4 mb-4">
-		<div
-			class="flex items-center justify-center rounded bg-item h-28"
-		>
-		</div>
-		<div
-			class="flex items-center justify-center rounded bg-item h-28"
-		>
-		</div>
-		<div
-			class="flex items-center justify-center rounded bg-item h-28"
-		>
-		</div>
-		<div
-			class="flex items-center justify-center rounded bg-item h-28"
-		>
-		</div>
-	</div>
-	<div
-		class="flex items-center justify-center h-48 mb-4 rounded bg-item"
-	>
-	</div>
-	<div class="grid grid-cols-2 gap-4">
-		<div
-			class="flex items-center justify-center rounded bg-item h-28"
-		>
-		</div>
-		<div
-			class="flex items-center justify-center rounded bg-item h-28"
-		>
-		</div>
-		<div
-			class="flex items-center justify-center rounded bg-item h-28"
-		>
-		</div>
-		<div
-			class="flex items-center justify-center rounded bg-item h-28"
-		>
+			<div class="text-white text-center font-bold text-2xl">Search Item</div>
+			<input
+				autocomplete="off"
+				type="text"
+				id="first_name"
+				class="bg-primary w-full outline-none focus:outline-none mt-4 text-gray-400 text-sm rounded-lg block p-2.5"
+				placeholder="Search item"
+			/>
 		</div>
 	</div>
 </div>
