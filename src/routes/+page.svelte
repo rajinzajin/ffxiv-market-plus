@@ -3,7 +3,7 @@
 	import axios from "axios";
 
 	onMount(async () => {
-		var res = await axios("/api/data-centers");
+		// var res = await axios("/api/data-centers");
 		// console.log(res.data);
 	});
 </script>
