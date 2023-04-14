@@ -1,6 +1,6 @@
 import { error, json } from "@sveltejs/kit";
 import { convertToArray, filterItemJsonObjects } from "../../../utils/item_utils";
-import items from "../../../data/items.json"
+import items from "../../../data/marketable_items.json"
 
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ request }) {
