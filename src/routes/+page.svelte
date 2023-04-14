@@ -57,13 +57,13 @@
 			<div class="relative">
 				<div
 					id="search_result"
-					class="{searchResultVisible} bg-item absolute max-h-80 rounded-2xl overflow-y-auto mt-2 pl-2 w-full z-50 text-white"
+					class="{searchResultVisible} bg-item absolute max-h-80 rounded-xl overflow-y-auto mt-2 p-2 w-full z-50 text-white"
 				>
 					<ul>
 						{#each searchResult as item}
 							<li class="h-auto cursor-pointer">
 								<div
-									class="flex m-auto hover:bg-primary py-2"
+									class="flex m-auto hover:bg-primary py-2 rounded-lg"
 									on:keydown={() => {}}
 									on:click={() => {
 										onSelectItemSearch(item.en);
