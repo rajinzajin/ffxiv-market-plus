@@ -3,11 +3,12 @@ import {
 	filterItemJsonObjects,
 	getItemImageUrl,
 	getItemNameByID,
+	getLowestPriceItem,
 } from "../src/utils/item_utils.js";
 import assert from "assert";
 import marketable_items from "../src/data/marketable_items.json" assert { type: "json" };
 
-describe("Utils", function () {
+describe("item meta data", function () {
 	const json_objects = {
 		3: {
 			en: "Ice Shard",
@@ -77,7 +78,68 @@ describe("Utils", function () {
 		assert.equal(getItemNameByID(marketable_items, -1), "");
 	});
 	it("get item image url", function () {
-		assert.equal(getItemImageUrl(1), `https://rajinzajin.github.io/ffxiv-assets/icon2x/1.png`);
-		assert.equal(getItemImageUrl(2), `https://rajinzajin.github.io/ffxiv-assets/icon2x/2.png`);
+		assert.equal(
+			getItemImageUrl(1),
+			`https://rajinzajin.github.io/ffxiv-assets/icon2x/1.png`
+		);
+		assert.equal(
+			getItemImageUrl(2),
+			`https://rajinzajin.github.io/ffxiv-assets/icon2x/2.png`
+		);
+	});
+});
+
+describe("getLowestPriceOnMannequin", () => {
+	it("should return null for an empty array", () => {
+		const result = getLowestPriceItem([]);
+		assert.strictEqual(result, null);
+	});
+
+	it("should return the object with the lowest pricePerUnit", () => {
+		const purchases = [
+			{
+				hq: true,
+				pricePerUnit: 100,
+				quantity: 1,
+				buyerName: "Bob",
+				onMannequin: false,
+			},
+			{
+				hq: false,
+				pricePerUnit: 50,
+				quantity: 2,
+				buyerName: "Alice",
+				onMannequin: true,
+			},
+			{
+				hq: true,
+				pricePerUnit: 75,
+				quantity: 1,
+				buyerName: "Charlie",
+				onMannequin: true,
+			},
+			{
+				hq: true,
+				pricePerUnit: 80,
+				quantity: 1,
+				buyerName: "Dave",
+				onMannequin: false,
+			},
+			{
+				hq: true,
+				pricePerUnit: 40,
+				quantity: 3,
+				buyerName: "Eve",
+				onMannequin: true,
+			},
+		];
+		const result = getLowestPriceItem(purchases);
+		assert.deepStrictEqual(result, {
+			hq: true,
+			pricePerUnit: 40,
+			quantity: 3,
+			buyerName: "Eve",
+			onMannequin: true,
+		});
 	});
 });

@@ -26,20 +26,63 @@ export function filterItemJsonObjects(items_json, item_name, max_result = -1) {
 	return filteredJson;
 }
 
-export async function getItemHistory(item_id) {
-	var res = await axios(
-		`https://universalis.app/api/history/Materia/${item_id}?entries=1800`
-	);
-	console.log(res.data);
-}
-
 export function getItemNameByID(list_item, item_id) {
-	if (list_item[item_id] == null) 
-		return "";
+	if (list_item[item_id] == null) return "";
 
 	return list_item[item_id].en;
 }
 
-export function getItemImageUrl(item_id){
-	return `https://rajinzajin.github.io/ffxiv-assets/icon2x/${item_id}.png`
+export function getItemImageUrl(item_id) {
+	return `https://rajinzajin.github.io/ffxiv-assets/icon2x/${item_id}.png`;
+}
+
+export function separateHqNq(entries) {
+	const hqList = [];
+	const nqList = [];
+
+	for (const entry of entries) {
+		if (entry.hq) {
+			hqList.push(entry);
+		} else {
+			nqList.push(entry);
+		}
+	}
+
+	return {
+		hqList,
+		nqList,
+	};
+}
+
+export function getLowestPriceItem(entries) {
+	let lowestPriceItem = null;
+	for (let purchase of entries) {
+		if (
+			lowestPriceItem === null ||
+			purchase.pricePerUnit < lowestPriceItem.pricePerUnit
+		) {
+			lowestPriceItem = purchase;
+		}
+	}
+	return lowestPriceItem;
+}
+
+export function getHighestPriceItem(entries) {
+	let highestPriceItem = null;
+	for (let purchase of entries) {
+		if (
+			highestPriceItem === null ||
+			purchase.pricePerUnit > highestPriceItem.pricePerUnit
+		) {
+			highestPriceItem = purchase;
+		}
+	}
+	return highestPriceItem;
+}
+
+export function filterMarketListings(transactions, params = {}) {
+	const { hq } = params;
+	return transactions.filter((transaction) => {
+		return transaction.hq === hq;
+	});
 }

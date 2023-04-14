@@ -21,18 +21,22 @@
 				<div class="">
 					<h1 class="text-gray-300 font-body">Normal Quality</h1>
 					<h1 class="text-money font-body font-black text-xl mt-2">
-						1.000.000
+						{data.nqLowest != null ? data.nqLowest.pricePerUnit : "-"}
 					</h1>
-					<h4 class="text-summary font-body font-[0]">33420 items</h4>
+                    {#if data.nqLowest != null}
+					<h4 class="text-summary font-body font-[0]">{data.nqLowest.quantity} items</h4>
+                    {/if}
 				</div>
 			</div>
 			<div class="h-100 mt-3 p-4 rounded-lg bg-primary flex">
 				<div class="">
 					<h1 class="text-gray-300 font-body">High Quality</h1>
 					<h1 class="text-money font-body font-black text-xl mt-2">
-						1.000.000
+						{data.hqLowest != null ? data.hqLowest.pricePerUnit : "-"}
 					</h1>
-					<h3 class="text-summary font-body font-[0]">33420 items</h3>
+                    {#if data.hqLowest != null}
+					<h3 class="text-summary font-body font-[0]">{data.hqLowest.quantity} items</h3>
+                    {/if}
 				</div>
 			</div>
 		</div>
@@ -44,18 +48,22 @@
 				<div class="">
 					<h1 class="text-gray-300 font-body">Normal Quality</h1>
 					<h1 class="text-money2 font-body font-black text-xl mt-2">
-						1.000.000
+						{data.nqHighest != null ? data.nqHighest.pricePerUnit : "-"}
 					</h1>
-					<h3 class="text-summary font-body font-[0]">33420 items</h3>
+                    {#if data.nqHighest != null}
+					<h3 class="text-summary font-body font-[0]">{data.nqHighest.quantity} items</h3>
+                    {/if}
 				</div>
 			</div>
 			<div class="h-100 mt-3 p-4 rounded-lg bg-primary flex">
 				<div class="">
 					<h1 class="text-gray-300 font-body">High Quality</h1>
 					<h1 class="text-money2 font-body font-black text-xl mt-2">
-						1.000.000
+						{data.hqHighest != null ? data.hqHighest.pricePerUnit : "-"}
 					</h1>
-					<h3 class="text-summary font-body font-[0]">33420 items</h3>
+                    {#if data.hqHighest != null}
+					<h3 class="text-summary font-body font-[0]">{data.hqHighest.quantity} items</h3>
+                    {/if}
 				</div>
 			</div>
 		</div>
