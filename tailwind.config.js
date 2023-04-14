@@ -8,6 +8,9 @@ export default {
 				primary: "rgb(32 36 66)",
 				secondary: "rgb(37 41 74)",
 				item: "rgb(45 50 90)",
+				money: "hsl(74.66666666666667, 100%, 60%)",
+				money2: "rgb(210 143 214)",
+				summary: "rgb(255 177 63)"
 			},
 			fontFamily: {
 				display: "Catamaran, sans-serif",
