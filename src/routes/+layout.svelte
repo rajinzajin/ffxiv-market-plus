@@ -41,7 +41,7 @@
 				class="h-20 mx-auto mt-8"
 				alt="Flowbite Logo"
 			/>
-			<div class="mt-4 text-center text-xl font-semibold dark:text-white">
+			<div class="mt-4 text-center text-2xl font-[800] font-display dark:text-white">
 				FFXIV Market+
 			</div>
 		</a>
@@ -62,7 +62,7 @@
 							d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"
 						/></svg
 					>
-					<span class="ml-5">Home</span>
+					<span class="ml-5">Market</span>
 				</a>
 			</li>
 			<li>
@@ -87,6 +87,7 @@
 		</ul>
 	</div>
 </aside>
-<div class="sm:ml-80">
+<div class="sm:ml-80 px-6 py-8">
 	<slot />
+	<div class="text-white font-black text-2xl">Footer</div>
 </div>
