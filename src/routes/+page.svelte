@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from "svelte";
 	import axios from "axios";
-  import { getItemHistory } from "../utils/item_utils";
+	import { getItemHistory, getItemImageUrl } from "../utils/item_utils";
 
 	let searchResultVisible = "invisible";
 	let searchResult = [];
@@ -21,7 +21,7 @@
 	async function onSelectItemSearch(item) {
 		searchResultVisible = "invisible";
 		searchText = item.en;
-		await getItemHistory(item._id)
+		navigation;
 	}
 
 	function handleClick(event) {
@@ -40,12 +40,14 @@
 	});
 </script>
 
-<div class="px-6 py-8 bg-secondary">
+<div class="bg-secondary">
 	<div class="grid grid-cols-3 gap-4 mb-4">
 		<div
 			class="h-100 p-5 w-full max-w-full items-center justify-center rounded-2xl bg-item"
 		>
-			<h1 class="text-white text-center font-display font-black text-3xl">Search Item</h1>
+			<h1 class="text-white text-center font-display font-black text-3xl">
+				Search Item
+			</h1>
 			<input
 				autocomplete="off"
 				type="text"
@@ -63,8 +65,11 @@
 				>
 					<ul>
 						{#each searchResult as item}
-							<li class="h-auto cursor-pointer">
-								<div
+							<li
+								class="h-auto cursor-pointer font-body font-bold text-gray-300"
+							>
+								<a
+									href="/market/{item._id}"
 									class="flex m-auto hover:bg-primary py-2 rounded-lg"
 									on:keydown={() => {}}
 									on:click={() => {
@@ -72,12 +77,12 @@
 									}}
 								>
 									<img
-										src="https://rajinzajin.github.io/ffxiv-assets/icon2x/{item._id}.png"
-										alt="Flowbite Logo"
+										src={getItemImageUrl(item._id)}
+										alt={item.en}
 										class="ml-3 h-10"
 									/>
 									<div class="flex-1 h-full ml-3 my-auto">{item.en}</div>
-								</div>
+								</a>
 							</li>
 						{/each}
 					</ul>
