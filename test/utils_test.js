@@ -1,16 +1,22 @@
-import { convertToArray } from "../src/utils/item_objects_to_array.js";
+import { convertToArray, filterItemJsonObjects } from "../src/utils/item_utils.js";
 import assert from "assert";
 
 describe("Utils", function () {
-	const input = {
+	const json_objects = {
 		3: {
 			en: "Ice Shard",
 			de: "Eisscherbe",
 			ja: "アイスシャード",
 			fr: "Éclat de glace",
 		},
+		9: {
+			en: "Ice Crystal",
+			de: "Eiskristall",
+			ja: "アイスクリスタル",
+			fr: "Cristal de glace",
+		},
 	};
-	const output = [
+	const convertArrayOutput = [
 		{
 			_id: "3",
 			en: "Ice Shard",
@@ -18,15 +24,28 @@ describe("Utils", function () {
 			ja: "アイスシャード",
 			fr: "Éclat de glace",
 		},
+		{
+			_id: "9",
+			en: "Ice Crystal",
+			de: "Eiskristall",
+			ja: "アイスクリスタル",
+			fr: "Cristal de glace",
+		}
 	];
-	
+
 	it("convert item json objects to array", function () {
-		const convertedInput = convertToArray(input)
-		assert.equal(convertedInput.length, output.length)
-		assert.equal(convertedInput[0]._id, output[0]._id)
-		assert.equal(convertedInput[0].en, output[0].en)
-		assert.equal(convertedInput[0].de, output[0].de)
-		assert.equal(convertedInput[0].ja, output[0].ja)
-		assert.equal(convertedInput[0].fr, output[0].fr)
+		const convertedInput = convertToArray(json_objects);
+		assert.equal(convertedInput.length, convertArrayOutput.length);
+		assert.equal(convertedInput[0]._id, convertArrayOutput[0]._id);
+		assert.equal(convertedInput[0].en, convertArrayOutput[0].en);
+		assert.equal(convertedInput[0].de, convertArrayOutput[0].de);
+		assert.equal(convertedInput[0].ja, convertArrayOutput[0].ja);
+		assert.equal(convertedInput[0].fr, convertArrayOutput[0].fr);
+	});
+
+	it("filter item json objects", function () {
+		assert.equal(convertToArray(filterItemJsonObjects(json_objects, "Ice Shard")).length, 1)
+		assert.equal(convertToArray(filterItemJsonObjects(json_objects, "None")).length, 0)
+		assert.equal(convertToArray(filterItemJsonObjects(json_objects, "Ice Crystal")).length, 1)
 	});
 });
