@@ -39,3 +39,7 @@ export function getItemNameByID(list_item, item_id) {
 
 	return list_item[item_id].en;
 }
+
+export function getItemImageUrl(item_id){
+	return `https://rajinzajin.github.io/ffxiv-assets/icon2x/${item_id}.png`
+}
