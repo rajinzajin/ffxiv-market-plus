@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export function convertToArray(jsonObjects) {
 	var itemsArray = Object.entries(jsonObjects).map(([key, value]) => {
 		return {
@@ -22,4 +24,9 @@ export function filterItemJsonObjects(items_json, item_name, max_result = -1){
 	});
 
 	return filteredJson
+}
+
+export async function getItemHistory(item_id){
+	var res = await axios(`https://universalis.app/api/history/Materia/${item_id}?entries=1800`)
+	console.log(res.data)
 }

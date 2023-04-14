@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from "svelte";
 	import axios from "axios";
+  import { getItemHistory } from "../utils/item_utils";
 
 	let searchResultVisible = "invisible";
 	let searchResult = [];
@@ -17,9 +18,10 @@
 			searchResult.length > 0 && item_name !== "" ? "visible" : "invisible";
 	}
 
-	function onSelectItemSearch(selected_item) {
+	async function onSelectItemSearch(item) {
 		searchResultVisible = "invisible";
-		searchText = selected_item;
+		searchText = item.en;
+		await getItemHistory(item._id)
 	}
 
 	function handleClick(event) {
@@ -39,11 +41,11 @@
 </script>
 
 <div class="px-6 py-8 bg-secondary">
-	<div class="grid grid-cols-1 gap-4 mb-4">
+	<div class="grid grid-cols-3 gap-4 mb-4">
 		<div
-			class="h-100 p-5 w-1/3 max-w-full items-center justify-center rounded-2xl bg-item"
+			class="h-100 p-5 w-full max-w-full items-center justify-center rounded-2xl bg-item"
 		>
-			<div class="text-white text-center font-bold text-2xl">Search Item</div>
+			<h1 class="text-white text-center font-display font-black text-3xl">Search Item</h1>
 			<input
 				autocomplete="off"
 				type="text"
@@ -66,7 +68,7 @@
 									class="flex m-auto hover:bg-primary py-2 rounded-lg"
 									on:keydown={() => {}}
 									on:click={() => {
-										onSelectItemSearch(item.en);
+										onSelectItemSearch(item);
 									}}
 								>
 									<img
@@ -82,6 +84,9 @@
 				</div>
 			</div>
 		</div>
+		<div
+			class="h-full p-5 w-full max-w-full items-center justify-center rounded-2xl bg-item"
+		/>
 	</div>
 </div>
 

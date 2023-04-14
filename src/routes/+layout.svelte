@@ -45,12 +45,12 @@
 				FFXIV Market+
 			</div>
 		</a>
-		<ul class="space-y-2 font-medium text-xl mt-9">
+		<ul class="space-y-2 text-gray-400 font-body font-semibold text-lg mt-9">
 			<li>
 				<a
 					href="/"
 					class="{activeUrl === '/' &&
-						'bg-item'} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-item"
+						'bg-item text-white'} flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-item"
 				>
 					<svg
 						aria-hidden="true"
@@ -69,7 +69,7 @@
 				<a
 					href="/data-centers"
 					class="{activeUrl === '/data-centers' &&
-						'bg-item'} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-item"
+						'bg-item text-white'} flex items-center p-2  rounded-lg hover:bg-item"
 				>
 					<svg
 						aria-hidden="true"
