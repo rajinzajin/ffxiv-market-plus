@@ -47,5 +47,7 @@ describe("Utils", function () {
 		assert.equal(convertToArray(filterItemJsonObjects(json_objects, "Ice Shard")).length, 1)
 		assert.equal(convertToArray(filterItemJsonObjects(json_objects, "None")).length, 0)
 		assert.equal(convertToArray(filterItemJsonObjects(json_objects, "Ice Crystal")).length, 1)
+		assert.equal(convertToArray(filterItemJsonObjects(json_objects, "Ice", 1)).length, 1)
+		assert.equal(convertToArray(filterItemJsonObjects(json_objects, "Ice", 0)).length, 0)
 	});
 });
