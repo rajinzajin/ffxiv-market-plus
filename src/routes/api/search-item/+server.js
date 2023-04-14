@@ -4,8 +4,8 @@ import items from "../../../data/items.json"
 
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ request }) {
-	const { item_name } = await request.json();
+	const { item_name, max_results } = await request.json();
 
-	const filteredJson = filterItemJsonObjects(items, item_name)
+	const filteredJson = filterItemJsonObjects(items, item_name, max_results)
 	return json(convertToArray(filteredJson));
 }
