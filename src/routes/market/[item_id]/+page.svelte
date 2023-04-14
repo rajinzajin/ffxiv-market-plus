@@ -24,7 +24,7 @@
 						{data.nqLowest != null ? data.nqLowest.pricePerUnit : "-"}
 					</h1>
                     {#if data.nqLowest != null}
-					<h4 class="text-summary font-body font-[0]">{data.nqLowest.quantity} items</h4>
+					<h4 class="text-summary font-body font-[0]">{data.nqLowest.quantity} Unit{data.nqLowest.quantity > 1 ? "s" : ""}</h4>
                     {/if}
 				</div>
 			</div>
@@ -35,7 +35,7 @@
 						{data.hqLowest != null ? data.hqLowest.pricePerUnit : "-"}
 					</h1>
                     {#if data.hqLowest != null}
-					<h3 class="text-summary font-body font-[0]">{data.hqLowest.quantity} items</h3>
+					<h3 class="text-summary font-body font-[0]">{data.hqLowest.quantity} Unit{data.hqLowest.quantity > 1 ? "s" : ""}</h3>
                     {/if}
 				</div>
 			</div>
@@ -51,7 +51,7 @@
 						{data.nqHighest != null ? data.nqHighest.pricePerUnit : "-"}
 					</h1>
                     {#if data.nqHighest != null}
-					<h3 class="text-summary font-body font-[0]">{data.nqHighest.quantity} items</h3>
+					<h3 class="text-summary font-body font-[0]">{data.nqHighest.quantity} Unit{data.nqHighest.quantity > 1 ? "s" : ""}</h3>
                     {/if}
 				</div>
 			</div>
@@ -62,7 +62,7 @@
 						{data.hqHighest != null ? data.hqHighest.pricePerUnit : "-"}
 					</h1>
                     {#if data.hqHighest != null}
-					<h3 class="text-summary font-body font-[0]">{data.hqHighest.quantity} items</h3>
+					<h3 class="text-summary font-body font-[0]">{data.hqHighest.quantity} Unit{data.hqHighest.quantity > 1 ? "s" : ""}</h3>
                     {/if}
 				</div>
 			</div>
