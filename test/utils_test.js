@@ -1,5 +1,10 @@
-import { convertToArray, filterItemJsonObjects } from "../src/utils/item_utils.js";
+import {
+	convertToArray,
+	filterItemJsonObjects,
+	getItemNameByID,
+} from "../src/utils/item_utils.js";
 import assert from "assert";
+import marketable_items from "../src/data/marketable_items.json" assert { type: "json" };
 
 describe("Utils", function () {
 	const json_objects = {
@@ -30,7 +35,7 @@ describe("Utils", function () {
 			de: "Eiskristall",
 			ja: "アイスクリスタル",
 			fr: "Cristal de glace",
-		}
+		},
 	];
 
 	it("convert item json objects to array", function () {
@@ -44,10 +49,30 @@ describe("Utils", function () {
 	});
 
 	it("filter item json objects", function () {
-		assert.equal(convertToArray(filterItemJsonObjects(json_objects, "Ice Shard")).length, 1)
-		assert.equal(convertToArray(filterItemJsonObjects(json_objects, "None")).length, 0)
-		assert.equal(convertToArray(filterItemJsonObjects(json_objects, "Ice Crystal")).length, 1)
-		assert.equal(convertToArray(filterItemJsonObjects(json_objects, "Ice", 1)).length, 1)
-		assert.equal(convertToArray(filterItemJsonObjects(json_objects, "Ice", 0)).length, 0)
+		assert.equal(
+			convertToArray(filterItemJsonObjects(json_objects, "Ice Shard")).length,
+			1
+		);
+		assert.equal(
+			convertToArray(filterItemJsonObjects(json_objects, "None")).length,
+			0
+		);
+		assert.equal(
+			convertToArray(filterItemJsonObjects(json_objects, "Ice Crystal")).length,
+			1
+		);
+		assert.equal(
+			convertToArray(filterItemJsonObjects(json_objects, "Ice", 1)).length,
+			1
+		);
+		assert.equal(
+			convertToArray(filterItemJsonObjects(json_objects, "Ice", 0)).length,
+			0
+		);
+	});
+
+	it("get item name by id", function () {
+		assert.equal(getItemNameByID(marketable_items, 3), "Ice Shard");
+		assert.equal(getItemNameByID(marketable_items, -1), "");
 	});
 });

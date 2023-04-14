@@ -7,14 +7,14 @@ export function convertToArray(jsonObjects) {
 			...value,
 		};
 	});
-  return itemsArray;
+	return itemsArray;
 }
 
-export function filterItemJsonObjects(items_json, item_name, max_result = -1){
+export function filterItemJsonObjects(items_json, item_name, max_result = -1) {
 	const filteredJson = {};
 	var result_count = 0;
 	Object.keys(items_json).forEach((key) => {
-		if(max_result != -1 && result_count >= max_result) {
+		if (max_result != -1 && result_count >= max_result) {
 			return;
 		}
 		if (items_json[key].en.toLowerCase().includes(item_name.toLowerCase())) {
@@ -23,10 +23,19 @@ export function filterItemJsonObjects(items_json, item_name, max_result = -1){
 		}
 	});
 
-	return filteredJson
+	return filteredJson;
 }
 
-export async function getItemHistory(item_id){
-	var res = await axios(`https://universalis.app/api/history/Materia/${item_id}?entries=1800`)
-	console.log(res.data)
+export async function getItemHistory(item_id) {
+	var res = await axios(
+		`https://universalis.app/api/history/Materia/${item_id}?entries=1800`
+	);
+	console.log(res.data);
+}
+
+export function getItemNameByID(list_item, item_id) {
+	if (list_item[item_id] == null) 
+		return "";
+
+	return list_item[item_id].en;
 }
