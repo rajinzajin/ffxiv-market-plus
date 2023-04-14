@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from "svelte";
 	import axios from "axios";
-	import { getItemHistory, getItemImageUrl } from "../utils/item_utils";
+	import { getItemImageUrl } from "../utils/item_utils";
 
 	let searchResultVisible = "invisible";
 	let searchResult = [];
@@ -21,7 +21,6 @@
 	async function onSelectItemSearch(item) {
 		searchResultVisible = "invisible";
 		searchText = item.en;
-		navigation;
 	}
 
 	function handleClick(event) {
@@ -37,6 +36,9 @@
 
 	onMount(() => {
 		document.addEventListener("click", handleClick);
+		return () => {
+			document.removeEventListener("click", handleClick);
+		};
 	});
 </script>
 
