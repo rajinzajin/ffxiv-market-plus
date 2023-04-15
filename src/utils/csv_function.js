@@ -1,5 +1,6 @@
 import csvParser from "csv-parser";
 import fs from "fs";
+import { filterArray } from "./array_object";
 
 let cachedItemsData
 
@@ -27,3 +28,12 @@ export async function processItemCSV() {
         });
     });
   }
+  
+export async function getItemDetailByID(id) {
+	var data = await processItemCSV();
+	var itemDetail = filterArray(data, { "#": `${id}` });
+	if (itemDetail.length > 0) {
+		return itemDetail[0];
+	}
+	return null;
+}

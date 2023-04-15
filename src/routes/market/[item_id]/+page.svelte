@@ -3,14 +3,21 @@
 	import { getItemImageUrl } from "../../../utils/item_utils.js";
 
 	export let data;
+	let { item_detail } = data
 </script>
 
 <div>
 	<div class="flex">
 		<img class="h-20" src={getItemImageUrl(data.item_id)} alt={data.name} />
-		<h1 class="text-white text-4xl font-black font-display my-auto ml-5">
-			{data.name}
-		</h1>
+		<div class="ml-5 font-display">
+			<h1 class="text-white text-4xl font-black my-auto">
+				{data.name}
+			</h1>
+			<h1 class="text-gray-400 text-lg font-black my-auto">
+				{item_detail["Description"]}
+			</h1>
+		</div>
+		
 	</div>
 	<div class="mt-6">
 		<div
