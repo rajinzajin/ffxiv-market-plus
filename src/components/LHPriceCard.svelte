@@ -1,4 +1,5 @@
 <script>
+    import { formatNumberToGilString } from "../utils/format_function";
     export let item
     export let title
     export let color
@@ -7,7 +8,7 @@
 <div class="h-100 mt-3 p-4 rounded-lg bg-primary">
     <h1 class="text-gray-300 font-body">{title}</h1>
     <h1 class="text-{color} font-body font-black text-xl mt-2">
-        {item != null ? item.pricePerUnit : "-"}
+        {item != null ? formatNumberToGilString(item.pricePerUnit) : "-"}
     </h1>
     {#if item != null}
         <div class="flex items-center">
