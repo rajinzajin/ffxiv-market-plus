@@ -18,20 +18,20 @@
 		>
 			<h1 class="text-white font-display text-2xl font-bold">Lowest Price</h1>
 
-			<LhPriceCard color="money" title="Normal Quality" item={data.nqLowest} />
-			<LhPriceCard color="money" title="High Quality" item={data.hqLowest} />
+			<LhPriceCard color="text-money" title="Normal Quality" item={data.nqLowest} />
+			<LhPriceCard color="text-money" title="High Quality" item={data.hqLowest} />
 		</div>
 		<div
 			class="h-100 p-5 w-96 max-w-full items-center justify-center rounded-2xl bg-item mt-6"
 		>
 			<h1 class="text-white font-display text-2xl font-bold">Highest Price</h1>
 			<LhPriceCard
-				color="money2"
+				color="text-money2"
 				title="Normal Quality"
 				item={data.nqHighest}
 			/>
 			<LhPriceCard
-				color="money2"
+				color="text-money2"
 				title="High Quality"
 				item={data.hqHighest}
 			/>
