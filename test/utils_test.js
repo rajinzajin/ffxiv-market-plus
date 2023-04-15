@@ -1,6 +1,7 @@
 import {
 	convertToArray,
 	filterItemJsonObjects,
+	getHighestPriceItem,
 	getItemImageUrl,
 	getItemNameByID,
 	getLowestPriceItem,
@@ -89,13 +90,15 @@ describe("item meta data", function () {
 	});
 });
 
-describe("getLowestPriceOnMannequin", () => {
+describe("get lowest and highest price item", () => {
 	it("should return null for an empty array", () => {
-		const result = getLowestPriceItem([]);
-		assert.strictEqual(result, null);
+		const hResult = getLowestPriceItem([]);
+		const lResult = getHighestPriceItem([]);
+		assert.strictEqual(hResult, null);
+		assert.strictEqual(lResult, null);
 	});
 
-	it("should return the object with the lowest pricePerUnit", () => {
+	it("should return the object with the lowest and highest pricePerUnit", () => {
 		const purchases = [
 			{
 				hq: true,
@@ -117,29 +120,23 @@ describe("getLowestPriceOnMannequin", () => {
 				quantity: 1,
 				buyerName: "Charlie",
 				onMannequin: true,
-			},
-			{
-				hq: true,
-				pricePerUnit: 80,
-				quantity: 1,
-				buyerName: "Dave",
-				onMannequin: false,
-			},
-			{
-				hq: true,
-				pricePerUnit: 40,
-				quantity: 3,
-				buyerName: "Eve",
-				onMannequin: true,
-			},
+			}
 		];
-		const result = getLowestPriceItem(purchases);
-		assert.deepStrictEqual(result, {
-			hq: true,
-			pricePerUnit: 40,
-			quantity: 3,
-			buyerName: "Eve",
+		const lResult = getLowestPriceItem(purchases);
+		assert.deepStrictEqual(lResult, {
+			hq: false,
+			pricePerUnit: 50,
+			quantity: 2,
+			buyerName: "Alice",
 			onMannequin: true,
+		});
+		const hResult = getHighestPriceItem(purchases);
+		assert.deepStrictEqual(hResult, {
+			hq: true,
+			pricePerUnit: 100,
+			quantity: 1,
+			buyerName: "Bob",
+			onMannequin: false,
 		});
 	});
 });

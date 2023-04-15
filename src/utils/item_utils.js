@@ -79,10 +79,3 @@ export function getHighestPriceItem(entries) {
 	}
 	return highestPriceItem;
 }
-
-export function filterMarketListings(transactions, params = {}) {
-	const { hq } = params;
-	return transactions.filter((transaction) => {
-		return transaction.hq === hq;
-	});
-}
