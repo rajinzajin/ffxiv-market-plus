@@ -1,15 +1,21 @@
 <script>
+	import { onMount } from "svelte";
+	import { main_world, world_store } from "../stores/dc_world_stores";
+
 	let dropdownOpened = false;
-	export let worlds;
-	export let selected_world;
+	let worlds = [];
+	let m_world;
+
 	export let on_select_world;
 
-	$: {
-		if (selected_world != null) {
-			dropdownOpened = false;
-			on_select_world(worlds[selected_world]);
-		}
+	function selectWorld(world) {
+		dropdownOpened = false;
+		on_select_world(world);
 	}
+	onMount(() => {
+		world_store.subscribe((value) => (worlds = value));
+		main_world.subscribe((value) => (m_world = value));
+	});
 </script>
 
 <div>
@@ -18,7 +24,7 @@
 		class="w-full relative text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-md font-body font-[700] px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
 		type="button"
 		on:click={() => (dropdownOpened = !dropdownOpened)}
-		><span>{worlds[selected_world].name}</span>
+		><span>{m_world != null ? m_world.name : ""}</span>
 		<svg
 			class="w-4 h-4 ml-2 absolute right-3"
 			aria-hidden="true"
@@ -49,10 +55,10 @@
 				<h1 class="text-gray-400 font-display font-bold text-lg ml-5 mt-3 mb-1">
 					World
 				</h1>
-				{#each worlds as world, index}
+				{#each worlds as world}
 					<li>
 						<div
-							on:click={() => (selected_world = index)}
+							on:click={() => selectWorld(world)}
 							on:keydown={() => {}}
 							class="mx-2 h-10 rounded-lg pl-3 cursor-pointer flex items-center hover:bg-blue-700"
 						>

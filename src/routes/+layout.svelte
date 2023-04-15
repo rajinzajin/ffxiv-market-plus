@@ -5,26 +5,29 @@
   	import WorldSelector from "../components/WorldSelector.svelte";
   	import { filterWorldsByIDs } from "../utils/world_function";
   	import { onMount } from "svelte";
-
+	import { data_center_store, main_dc, main_world, world_store } from "../stores/dc_world_stores"
 	export let data;
-
 	let { data_centers, worlds } = data;
-	let availableWorlds = []
-	let selected_dc = 0
-	let selected_world
 
 	$: activeUrl = $page.url.pathname;
 
-	function onSelectDC(data_center){
-		availableWorlds = filterWorldsByIDs(worlds, data_center.worlds)
-		selected_world = 0
+	function onSelectDC(dc){
+		main_dc.set(dc)
+		var available_worlds = filterWorldsByIDs(worlds, dc.worlds)
+		world_store.set(available_worlds)
+		main_world.set(available_worlds[0])
 	}
-	//TODO this called twice on startup, need fix
 	function onSelectWorld(world){
-		
+		main_world.set(world)
 	}
-
 	onMount(()=>{
+		var initial_dc = data_centers[0]
+		data_center_store.set(data_centers)
+		main_dc.set(initial_dc)
+
+		var available_worlds = filterWorldsByIDs(worlds, initial_dc.worlds)
+		world_store.set(available_worlds)
+		main_world.set(available_worlds[0])
 	});
 </script>
 
@@ -70,8 +73,8 @@
 			</div>
 		</a>
 		<div class="ml-2 mt-9 grid grid-cols-2 gap-3">
-			<DataCenterSelector selected_dc={selected_dc} on_select_dc={onSelectDC} data_centers={data_centers} />
-			<WorldSelector selected_world={selected_world} on_select_world={onSelectWorld} worlds={availableWorlds} />
+			<DataCenterSelector on_select_dc={onSelectDC} />
+			<WorldSelector on_select_world={onSelectWorld} />
 			<!-- <DataCenterSelector /> -->
 		</div>
 		<ul class="space-y-2 text-gray-400 font-body font-semibold text-lg mt-5">

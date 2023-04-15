@@ -1,15 +1,20 @@
 <script>
+	import { onMount } from "svelte";
+	import { data_center_store, main_dc } from "../stores/dc_world_stores";
 	let dropdownOpened = false;
-	export let selected_dc;
-	export let data_centers;
+	let data_centers = [];
+	let selected_dc;
+
 	export let on_select_dc;
 
-	$: {
-		if (selected_dc != null) {
-			dropdownOpened = false;
-			on_select_dc(data_centers[selected_dc]);
-		}
+	function selectDC(dc) {
+		dropdownOpened = false;
+		on_select_dc(dc);
 	}
+	onMount(() => {
+		data_center_store.subscribe((value) => (data_centers = value));
+		main_dc.subscribe((value) => (selected_dc = value));
+	});
 </script>
 
 <div>
@@ -18,7 +23,7 @@
 		class="w-full relative text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-md font-body font-[700] px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
 		type="button"
 		on:click={() => (dropdownOpened = !dropdownOpened)}
-		><span>{data_centers[selected_dc].name}</span>
+		><span>{selected_dc != null ? selected_dc.name : ""}</span>
 		<svg
 			class="w-4 h-4 ml-2 absolute right-3"
 			aria-hidden="true"
@@ -49,10 +54,10 @@
 				<h1 class="text-gray-400 font-display font-bold text-lg ml-5 mt-3 mb-1">
 					Data Center
 				</h1>
-				{#each data_centers as data_center, index}
+				{#each data_centers as data_center}
 					<li>
 						<div
-							on:click={() => (selected_dc = index)}
+							on:click={() => selectDC(data_center)}
 							on:keydown={() => {}}
 							class="mx-2 h-10 rounded-lg pl-3 cursor-pointer flex items-center hover:bg-blue-700"
 						>
