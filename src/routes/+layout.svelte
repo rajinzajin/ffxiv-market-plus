@@ -1,17 +1,31 @@
 <script>
-	import { onMount } from "svelte";
 	import "../app.css";
-	import { navigating, page } from "$app/stores";
+	import { page } from "$app/stores";
 	import DataCenterSelector from "../components/DataCenterSelector.svelte";
-	
+  	import WorldSelector from "../components/WorldSelector.svelte";
+  	import { filterWorldsByIDs } from "../utils/world_function";
+  	import { onMount } from "svelte";
+
 	export let data;
-	let { data_centers } = data;
+
+	let { data_centers, worlds } = data;
+	let availableWorlds = []
+	let selected_dc = 0
+	let selected_world
 
 	$: activeUrl = $page.url.pathname;
 
 	function onSelectDC(data_center){
+		availableWorlds = filterWorldsByIDs(worlds, data_center.worlds)
+		selected_world = 0
+	}
+	//TODO this called twice on startup, need fix
+	function onSelectWorld(world){
 		
 	}
+
+	onMount(()=>{
+	});
 </script>
 
 <button
@@ -56,7 +70,8 @@
 			</div>
 		</a>
 		<div class="ml-2 mt-9 grid grid-cols-2 gap-3">
-			<DataCenterSelector on_select_dc={onSelectDC} data_centers={data_centers} />
+			<DataCenterSelector selected_dc={selected_dc} on_select_dc={onSelectDC} data_centers={data_centers} />
+			<WorldSelector selected_world={selected_world} on_select_world={onSelectWorld} worlds={availableWorlds} />
 			<!-- <DataCenterSelector /> -->
 		</div>
 		<ul class="space-y-2 text-gray-400 font-body font-semibold text-lg mt-5">
