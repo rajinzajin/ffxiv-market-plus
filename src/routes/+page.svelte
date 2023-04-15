@@ -2,6 +2,7 @@
 	import { onMount } from "svelte";
 	import axios from "axios";
 	import { getItemImageUrl } from "../utils/item_utils";
+  import MarketEvents from "../components/MarketEvents.svelte";
 
 	let searchResultVisible = "invisible";
 	let searchResult = [];
@@ -91,9 +92,7 @@
 				</div>
 			</div>
 		</div>
-		<div
-			class="h-full p-5 w-full max-w-full items-center justify-center rounded-2xl bg-item"
-		/>
+		<MarketEvents></MarketEvents>
 	</div>
 </div>
 
