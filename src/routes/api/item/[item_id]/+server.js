@@ -1,5 +1,5 @@
 import { json } from "@sveltejs/kit";
-import { processItemCSV } from "../../../../utils/csv_function";
+import { processItemCSV } from "../../../../utils/item_csv_function";
 import { filterArray } from "../../../../utils/array_object";
 
 /** @type {import('./$types').RequestHandler} */

@@ -2,8 +2,16 @@
 	import { onMount } from "svelte";
 	import "../app.css";
 	import { navigating, page } from "$app/stores";
+	import DataCenterSelector from "../components/DataCenterSelector.svelte";
+	
+	export let data;
+	let { data_centers } = data;
 
 	$: activeUrl = $page.url.pathname;
+
+	function onSelectDC(data_center){
+		
+	}
 </script>
 
 <button
@@ -31,7 +39,7 @@
 
 <aside
 	id="logo-sidebar"
-	class="fixed top-0 left-0 z-40 w-80 h-screen transition-transform -translate-x-full sm:translate-x-0"
+	class="fixed top-0 left-0 z-40 w-[25rem] h-screen transition-transform -translate-x-full sm:translate-x-0"
 	aria-label="Sidebar"
 >
 	<div class="h-full px-6 py-4 overflow-y-auto bg-primary">
@@ -41,11 +49,17 @@
 				class="h-20 mx-auto mt-8"
 				alt="Flowbite Logo"
 			/>
-			<div class="mt-4 text-center text-2xl font-[800] font-display dark:text-white">
+			<div
+				class="mt-4 text-center text-2xl font-[800] font-display dark:text-white"
+			>
 				FFXIV Market+
 			</div>
 		</a>
-		<ul class="space-y-2 text-gray-400 font-body font-semibold text-lg mt-9">
+		<div class="ml-2 mt-9 grid grid-cols-2 gap-3">
+			<DataCenterSelector on_select_dc={onSelectDC} data_centers={data_centers} />
+			<!-- <DataCenterSelector /> -->
+		</div>
+		<ul class="space-y-2 text-gray-400 font-body font-semibold text-lg mt-5">
 			<li>
 				<a
 					href="/"
@@ -69,7 +83,7 @@
 				<a
 					href="/data-centers"
 					class="{activeUrl === '/data-centers' &&
-						'bg-item text-white'} flex items-center p-2  rounded-lg hover:bg-item"
+						'bg-item text-white'} flex items-center p-2 rounded-lg hover:bg-item"
 				>
 					<svg
 						aria-hidden="true"
@@ -87,7 +101,7 @@
 		</ul>
 	</div>
 </aside>
-<div class="sm:ml-80 px-6 py-8">
+<div class="sm:ml-[25rem] px-6 py-8">
 	<slot />
 	<div class="text-white font-black text-2xl">Footer</div>
 </div>
