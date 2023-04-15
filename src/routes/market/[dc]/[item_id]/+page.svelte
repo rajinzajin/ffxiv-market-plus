@@ -1,6 +1,6 @@
 <script>
-	import LhPriceCard from "../../../components/LHPriceCard.svelte";
-	import { getItemImageUrl } from "../../../utils/item_utils.js";
+	import LhPriceCard from "../../../../components/LHPriceCard.svelte";
+	import { getItemImageUrl } from "../../../../utils/item_utils.js";
 
 	export let data;
 	let { item_detail } = data

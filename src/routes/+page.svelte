@@ -3,10 +3,12 @@
 	import axios from "axios";
 	import { getItemImageUrl } from "../utils/item_utils";
   import MarketEvents from "../components/MarketEvents.svelte";
+  import { main_dc } from "../stores/dc_world_stores";
 
 	let searchResultVisible = "invisible";
 	let searchResult = [];
 	let searchText = "";
+	let main_data_center
 
 	async function onSearch(e) {
 		var item_name = e.target.value;
@@ -36,6 +38,7 @@
 	}
 
 	onMount(() => {
+		main_dc.subscribe(value=> main_data_center = value)
 		document.addEventListener("click", handleClick);
 		return () => {
 			document.removeEventListener("click", handleClick);
@@ -72,7 +75,7 @@
 								class="h-auto cursor-pointer font-body font-bold text-gray-300"
 							>
 								<a
-									href="/market/{item._id}"
+									href="/market/{main_data_center.name}/{item._id}"
 									class="flex m-auto hover:bg-primary py-2 rounded-lg"
 									on:keydown={() => {}}
 									on:click={() => {
