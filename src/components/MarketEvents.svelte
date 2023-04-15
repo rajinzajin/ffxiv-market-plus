@@ -2,7 +2,8 @@
 	// import { serialize, deserialize } from "bson";
 	import { onMount } from "svelte";
 	import { json } from "@sveltejs/kit";
-	import { BSON } from "../../node_modules/bson/lib/bson.mjs";
+	//TODO need fix bson top level error
+	// import { BSON } from "../../node_modules/bson/lib/bson.mjs";
 	let socket;
 	onMount(() => {
 		// const addr = "wss://universalis.app/api/ws";
