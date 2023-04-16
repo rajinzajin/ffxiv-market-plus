@@ -1,11 +1,12 @@
-import { error, json } from "@sveltejs/kit";
+import { json } from "@sveltejs/kit";
 import { convertToArray, filterItemJsonObjects } from "../../../utils/item_utils";
-import items from "../../../data/marketable_items.json"
+import { get } from "svelte/store";
+import { marketable_items_json } from "../../../stores/server_stores";
 
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ request }) {
 	const { item_name, max_results } = await request.json();
 
-	const filteredJson = filterItemJsonObjects(items, item_name, max_results)
+	const filteredJson = filterItemJsonObjects(get(marketable_items_json), item_name, max_results)
 	return json(convertToArray(filteredJson));
 }
