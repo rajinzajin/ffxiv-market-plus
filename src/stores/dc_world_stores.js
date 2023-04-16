@@ -5,3 +5,5 @@ export const data_center_store = writable([]);
 
 export const main_world = writable(null)
 export const world_store = writable([])
+
+export const world_mapping_store = writable(null)

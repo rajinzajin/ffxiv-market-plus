@@ -3,9 +3,10 @@
 	import { page } from "$app/stores";
 	import DataCenterSelector from "../components/DataCenterSelector.svelte";
   	import WorldSelector from "../components/WorldSelector.svelte";
-  	import { filterWorldsByIDs } from "../utils/world_function";
+  	import { filterWorldsByIDs, getWorldNameFromMapping } from "../utils/world_function";
   	import { onMount } from "svelte";
-	import { data_center_store, main_dc, main_world, world_store } from "../stores/dc_world_stores"
+	import { data_center_store, main_dc, main_world, world_mapping_store, world_store } from "../stores/dc_world_stores"
+
 	export let data;
 	let { data_centers, worlds } = data;
 
@@ -21,6 +22,7 @@
 		main_world.set(world)
 	}
 	onMount(()=>{
+		world_mapping_store.set(data.world_mapping)
 		var initial_dc = data_centers[0]
 		data_center_store.set(data_centers)
 		main_dc.set(initial_dc)
