@@ -7,7 +7,7 @@
 
 <div>
 	<div
-		class="h-100 py-2 mb-12 px-5 w-96 max-w-full items-center justify-center rounded-2xl bg-item"
+		class="h-100 py-2 mb-6 px-5 w-96 max-w-full items-center justify-center rounded-2xl bg-item"
 	>
 		<div class="w-full mb-4">
 			<ItemSearchBar />
