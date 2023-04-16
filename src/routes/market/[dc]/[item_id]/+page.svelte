@@ -14,7 +14,7 @@
 				{data.name}
 			</h1>
 			<h1 class="text-gray-400 text-lg font-black my-auto">
-				{item_detail["Description"]}
+				{item_detail["9"]}
 			</h1>
 		</div>
 		
