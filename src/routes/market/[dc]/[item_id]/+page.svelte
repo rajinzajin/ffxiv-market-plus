@@ -7,17 +7,20 @@
 	} from "../../../../utils/item_utils.js";
 	import ItemSearchBar from "../../../../components/ItemSearchBar.svelte";
 	import { onMount } from "svelte";
-	import { main_dc, main_world } from "../../../../stores/dc_world_stores";
-	import {
-		getItemMarketData,
-	} from "../../../../utils/item_request";
+	import { main_dc } from "../../../../stores/dc_world_stores";
+	import { getItemMarketData } from "../../../../utils/item_request";
 	import { get } from "svelte/store";
 	import { filterArray } from "../../../../utils/array_object";
 
 	export let data;
-	let item
+	let item;
 
-	$: item = data.item;
+	$: {
+		item = data.item;
+		if (item != null && get(main_dc) != null) {
+			loadMarket();
+		}
+	}
 
 	let hqLowest, nqLowest, hqHighest, nqHighest;
 
@@ -32,7 +35,6 @@
 		};
 	});
 	async function loadMarket() {
-
 		var market_data = await getItemMarketData(item.ID, get(main_dc).name);
 
 		var hqList = filterArray(market_data.listings, { hq: true });
