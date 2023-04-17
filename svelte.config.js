@@ -12,6 +12,9 @@ const config = {
 		// csrf: {
 		// 	checkOrigin: true,
 		// },
+		// alias:{
+		// 	'database' : "src/database"
+		// }
 	},
 	preprocess: vitePreprocess(),
 };
