@@ -8,6 +8,7 @@
 	import { onMount } from "svelte";
 	import { get } from "svelte/store";
 
+	export let on_select_item_callback = () => {};
 	let main_data_center;
 	let searchText;
 	let searchResultVisible = "invisible";
@@ -29,6 +30,7 @@
 	async function onSelectItemSearch(item) {
 		searchResultVisible = "invisible";
 		searchText = item.en;
+		on_select_item_callback(item._id);
 	}
 
 	function handleClick(event) {
