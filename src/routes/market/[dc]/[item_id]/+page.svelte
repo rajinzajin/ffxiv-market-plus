@@ -2,7 +2,21 @@
 	import LhPriceCard from "../../../../components/LHPriceCard.svelte";
 	import { getItemImageUrl } from "../../../../utils/item_utils.js";
 	import ItemSearchBar from "../../../../components/ItemSearchBar.svelte";
+	import { onMount } from "svelte";
+	import { main_dc } from "../../../../stores/dc_world_stores";
 	export let data;
+
+	onMount(() => {
+		var unsubscribe_main_dc = main_dc.subscribe((value) => {
+			if (value != null) {
+				console.log(`${value.name} selected`);
+				
+			}
+		});
+		return () => {
+			unsubscribe_main_dc();
+		};
+	});
 </script>
 
 <div>

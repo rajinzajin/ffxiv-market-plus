@@ -29,7 +29,8 @@
 				var uint8Array = new Uint8Array(this.result);
 				var bsonData = BSON.deserialize(uint8Array);
 				var worldMapping = get(world_mapping_store)
-				console.log(getWorldNameFromMapping(worldMapping, bsonData.world));
+				// console.log(bsonData)
+				// console.log(getWorldNameFromMapping(worldMapping, bsonData.world));
 			};
 			reader.readAsArrayBuffer(event.data);
 		};

@@ -30,7 +30,6 @@ export async function processItemCSV() {
 	});
 }
 export async function getItemDetailByID(id) {
-	console.log("getting item detail by id")
 	var data = get(item_csv)
 	var itemDetail = filterArray(data, { 0: `${id}` });
 	if (itemDetail.length > 0) {
