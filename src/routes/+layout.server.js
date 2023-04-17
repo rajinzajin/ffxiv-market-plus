@@ -1,11 +1,11 @@
-import { initCache } from "../cache";
+// import { initCache } from "../cache";
 import { getArrayFromCSV } from "../utils/csv_functions";
 import { getDataCenters } from "../utils/data_center_function";
 import { getWorlds } from "../utils/world_function";
 
 /** @type {import('./$types').LayoutServerLoad} */
 export async function load() {
-    await initCache()
+    // await initCache()
 
 	var data_centers = await getDataCenters();
 	var worlds = await getWorlds();

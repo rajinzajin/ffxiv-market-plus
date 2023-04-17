@@ -8,24 +8,33 @@
 	import ItemSearchBar from "../../../../components/ItemSearchBar.svelte";
 	import { onMount } from "svelte";
 	import { main_dc, main_world } from "../../../../stores/dc_world_stores";
-	import { getItemMarketData, getXIVApiItem } from "../../../../utils/item_request";
+	import {
+		getItemMarketData,
+	} from "../../../../utils/item_request";
 	import { get } from "svelte/store";
 	import { filterArray } from "../../../../utils/array_object";
 
 	export let data;
-	let item;
+	let item
+
+	$: item = data.item;
 
 	let hqLowest, nqLowest, hqHighest, nqHighest;
 
 	onMount(async () => {
-		item = await getXIVApiItem(data.item_id, "ID,Name,Description")
+		var unsubscribe_main_dc = main_dc.subscribe(async (value) => {
+			if (value != null) {
+				await loadMarket();
+			}
+		});
+		return () => {
+			unsubscribe_main_dc();
+		};
+	});
+	async function loadMarket() {
 
-		var market_data = await getItemMarketData(
-			item.ID,
-			get(main_dc).name
-		);
+		var market_data = await getItemMarketData(item.ID, get(main_dc).name);
 
-		console.log(market_data);
 		var hqList = filterArray(market_data.listings, { hq: true });
 		var nqList = filterArray(market_data.listings, { hq: false });
 
@@ -34,19 +43,7 @@
 
 		hqHighest = getHighestPriceItem(hqList);
 		nqHighest = getHighestPriceItem(nqList);
-
-		
-
-		console.log(item);
-		var unsubscribe_main_dc = main_dc.subscribe((value) => {
-			if (value != null) {
-				console.log(`${value.name} selected`);
-			}
-		});
-		return () => {
-			unsubscribe_main_dc();
-		};
-	});
+	}
 </script>
 
 {#if item != null}
