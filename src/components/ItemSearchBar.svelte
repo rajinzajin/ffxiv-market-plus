@@ -1,8 +1,12 @@
 <script>
-	import { getItemImageUrl } from "../utils/item_utils";
-	import { main_dc } from "../stores/dc_world_stores";
+	import {
+		convertToArray,
+		filterItemJsonObjects,
+		getItemImageUrl,
+	} from "../utils/item_utils";
+	import { main_dc, marketable_item_store } from "../stores/dc_world_stores";
 	import { onMount } from "svelte";
-	import axios from "axios";
+	import { get } from "svelte/store";
 
 	let main_data_center;
 	let searchText;
@@ -11,11 +15,14 @@
 
 	async function onSearch(e) {
 		var item_name = e.target.value;
-		var res = await axios.post("/api/search-item", {
+
+		var filteredJson = filterItemJsonObjects(
+			get(marketable_item_store),
 			item_name,
-			max_results: 15,
-		});
-		searchResult = res.data;
+			18
+		);
+		searchResult = convertToArray(filteredJson);
+
 		searchResultVisible =
 			searchResult.length > 0 && item_name !== "" ? "visible" : "invisible";
 	}

@@ -7,3 +7,5 @@ export const main_world = writable(null)
 export const world_store = writable([])
 
 export const world_mapping_store = writable(null)
+
+export const marketable_item_store = writable(null)
