@@ -4,9 +4,7 @@
 	$: show_class = show ? "" : "hidden";
 </script>
 
-<div class={show_class}>
+<div class="{show_class} absolute w-full h-full">
 	<div class="absolute rounded-lg w-full h-full bg-opacity-50 bg-black" />
-	<span
-		class="loader mt-[-1rem] ml-[-1.18rem] w-9 h-9 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
-	/>
+	<span class="absolute loader w-9 h-9 m-auto top-0 left-0 right-0 bottom-0" />
 </div>

@@ -68,7 +68,10 @@
 			</div>
 		</div>
 
-		<div class="flex">
+		<div class="flex relative">
+			<div class="w-full h-full absolute">
+				<CardLoading show={false} />
+			</div>
 			<img class="h-20" src={getItemImageUrl(item.ID)} alt={item.Name} />
 			<div class="ml-5 font-display">
 				<h1 class="text-white text-4xl font-black my-auto">
