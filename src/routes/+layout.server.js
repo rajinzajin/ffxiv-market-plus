@@ -1,5 +1,5 @@
 import { initCache } from "../cache";
-import { getItem } from "$lib/server/dbtest";
+// import { getItem } from "$lib/server/dbtest";
 import { getArrayFromCSV } from "../utils/csv_functions";
 import { getDataCenters } from "../utils/data_center_function";
 import { getWorlds } from "../utils/world_function";
@@ -13,7 +13,7 @@ export async function load() {
 	var world_mapping = await getArrayFromCSV("https://raw.githubusercontent.com/rajinzajin/ffxiv-data-csv/master/csv/World.csv")
 	
 
-	getItem();
+	// getItem();
 
 	return {
 		data_centers,
