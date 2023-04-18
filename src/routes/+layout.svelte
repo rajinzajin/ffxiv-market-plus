@@ -134,5 +134,12 @@
 </aside>
 <div class="sm:ml-[25rem] px-6 py-8">
 	<slot />
-	<div class="text-white font-black text-2xl">Footer</div>
+	<div class="mx-3 mt-7 font-body text-left text-gray-400 font-semibold text-md">
+		Created by RajinZajin
+		<br>FFXIV Market+ is not affiliated with SQUARE ENIX.
+		<br>
+		<br>© 2010 - 2023 SQUARE ENIX CO., LTD. All Rights Reserved.
+		<br>FINAL FANTASY, FINAL FANTASY XIV, FFXIV are registered trademarks or trademarks of Square Enix Holdings Co., Ltd.
+		<br>Game content and materials are registered trademarks or trademarks of Square Enix Co., Ltd.
+	</div>
 </div>
