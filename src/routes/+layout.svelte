@@ -2,34 +2,45 @@
 	import "../app.css";
 	import { page } from "$app/stores";
 	import DataCenterSelector from "../components/DataCenterSelector.svelte";
-  	import WorldSelector from "../components/WorldSelector.svelte";
-  	import { filterWorldsByIDs, getWorldNameFromMapping } from "../utils/world_function";
-  	import { onMount } from "svelte";
-	import { data_center_store, main_dc, main_world, world_mapping_store, world_store } from "../stores/dc_world_stores"
+	import WorldSelector from "../components/WorldSelector.svelte";
+	import {
+		filterWorldsByIDs,
+		getWorldNameFromMapping,
+	} from "../utils/world_function";
+	import { onMount } from "svelte";
+	import {
+		data_center_store,
+		main_dc,
+		main_world,
+		world_mapping_store,
+		world_store,
+	} from "../stores/dc_world_stores";
+	import { marketable_items } from "../stores/item_stores";
 
 	export let data;
 	let { data_centers, worlds } = data;
 
 	$: activeUrl = $page.url.pathname;
 
-	function onSelectDC(dc){
-		main_dc.set(dc)
-		var available_worlds = filterWorldsByIDs(worlds, dc.worlds)
-		world_store.set(available_worlds)
-		main_world.set(available_worlds[0])
+	function onSelectDC(dc) {
+		main_dc.set(dc);
+		var available_worlds = filterWorldsByIDs(worlds, dc.worlds);
+		world_store.set(available_worlds);
+		main_world.set(available_worlds[0]);
 	}
-	function onSelectWorld(world){
-		main_world.set(world)
+	function onSelectWorld(world) {
+		main_world.set(world);
 	}
-	onMount(()=>{
-		world_mapping_store.set(data.world_mapping)
-		var initial_dc = data_centers[0]
-		data_center_store.set(data_centers)
-		main_dc.set(initial_dc)
+	onMount(() => {
+		marketable_items.set(data.marketable_items);
+		world_mapping_store.set(data.world_mapping);
+		var initial_dc = data_centers[0];
+		data_center_store.set(data_centers);
+		main_dc.set(initial_dc);
 
-		var available_worlds = filterWorldsByIDs(worlds, initial_dc.worlds)
-		world_store.set(available_worlds)
-		main_world.set(available_worlds[0])
+		var available_worlds = filterWorldsByIDs(worlds, initial_dc.worlds);
+		world_store.set(available_worlds);
+		main_world.set(available_worlds[0]);
 	});
 </script>
 
