@@ -35,7 +35,7 @@
 				{data.name}
 			</h1>
 			<h1 class="text-gray-400 text-lg font-black my-auto">
-				{data.item_detail["9"]}
+				{ data.item_detail.Description !== null ? data.item_detail.Description : ""}
 			</h1>
 		</div>
 	</div>
