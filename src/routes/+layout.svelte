@@ -110,7 +110,7 @@
 					<span class="ml-5">Market</span>
 				</a>
 			</li>
-			<li>
+			<!-- <li>
 				<a
 					href="/data-centers"
 					class="{activeUrl === '/data-centers' &&
@@ -128,7 +128,7 @@
 					>
 					<span class="flex-1 ml-5 whitespace-nowrap">Data Centers</span>
 				</a>
-			</li>
+			</li> -->
 		</ul>
 	</div>
 </aside>
