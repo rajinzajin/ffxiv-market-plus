@@ -80,9 +80,10 @@
 				alt="Flowbite Logo"
 			/>
 			<div
-				class="mt-4 text-center text-2xl font-[800] font-display dark:text-white"
+				class="relative mt-4 text-center text-2xl font-[800] font-display dark:text-white"
 			>
-				FFXIV Market+
+				XIV Market
+				<div class="absolute text-blue-400 text-6xl top-0 right-[5.7rem]">+</div>
 			</div>
 		</a>
 		<div class="ml-2 mt-9 grid grid-cols-2 gap-3">
@@ -134,12 +135,33 @@
 </aside>
 <div class="sm:ml-[25rem] px-6 py-8">
 	<slot />
-	<div class="mx-3 mt-7 font-body text-left text-gray-400 font-semibold text-md">
-		Created by RajinZajin
-		<br>FFXIV Market+ is not affiliated with SQUARE ENIX.
-		<br>
-		<br>© 2010 - 2023 SQUARE ENIX CO., LTD. All Rights Reserved.
-		<br>FINAL FANTASY, FINAL FANTASY XIV, FFXIV are registered trademarks or trademarks of Square Enix Holdings Co., Ltd.
-		<br>Game content and materials are registered trademarks or trademarks of Square Enix Co., Ltd.
+	<div class="flex mt-7">
+		<div
+			class="ml-3 pr-6 font-body text-left text-gray-400 font-semibold text-md border-gray-500 border-r"
+		>
+			Created by RajinZajin
+			<br />FFXIV Market+ is not affiliated with SQUARE ENIX.
+			<br />
+			<br />© 2010 - 2023 SQUARE ENIX CO., LTD. All Rights Reserved.
+			<br />FINAL FANTASY, FINAL FANTASY XIV, FFXIV are registered trademarks or
+			trademarks of Square Enix Holdings Co., Ltd.
+			<br />Game content and materials are registered trademarks or trademarks
+			of Square Enix Co., Ltd.
+		</div>
+
+		<div class="px-6 border-gray-500 border-r flex items-center justify-center">
+			<a
+				class="font-body text-gray-400 hover:text-white"
+				href="https://github.com"
+				target="_blank"
+			>
+				<div class="flex items-center">
+					<i class="fa fa-github text-3xl mr-3" />Github
+				</div>
+			</a>
+		</div>
+		<div class="px-6 border-gray-500 border-r flex items-center justify-center">
+			
+		</div>
 	</div>
 </div>

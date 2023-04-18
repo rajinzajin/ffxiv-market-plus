@@ -84,8 +84,8 @@
 	</div>
 
 	<div class="mt-6">
-		<h1 class="text-gray-300 text-xl font-black w-96 text-center">
-			{data_center}
+		<h1 class="text-white text-2xl font-[700] w-96 text-center">
+		  {data_center} 
 		</h1>
 		<div
 			class="h-100 mt-4 p-5 w-96 max-w-full items-center justify-center rounded-2xl bg-item"

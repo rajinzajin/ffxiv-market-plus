@@ -11,19 +11,24 @@
 	});
 </script>
 
-<div class="bg-secondary">
-	<div class="grid grid-cols-3 gap-4 mb-4">
-		<div
-			class="h-100 p-5 w-full max-w-full items-center justify-center rounded-2xl bg-item"
-		>
-			<h1 class="text-white text-center font-display font-black text-3xl">
-				Search Item
-			</h1>
-			<ItemSearchBar />
+<div class="flex justify-center h-[40rem] items-center">
+	<div class="bg-secondary">
+		<div class="h-full">
+			<div
+				class="h-100 p-5 w-[40rem] max-w-full items-center justify-center rounded-2xl bg-item"
+			>
+				<h1 class="text-white text-center font-display font-black text-2xl">
+					Search Item
+				</h1>
+				<div class="mt-5">
+					<ItemSearchBar />
+				</div>
+			</div>
+			<!-- <MarketEvents /> -->
 		</div>
-		<MarketEvents />
 	</div>
 </div>
+
 
 <style lang="postcss">
 	/* :global(html) {
