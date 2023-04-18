@@ -51,12 +51,12 @@
 	});
 </script>
 
-<div>
+<div class="w-full">
 	<input
 		autocomplete="off"
 		type="text"
 		id="search_input"
-		class="bg-primary w-full outline-none focus:outline-none mt-4 text-gray-400 text-sm rounded-lg block p-2.5"
+		class="bg-primary w-full outline-none focus:outline-none text-gray-400 text-sm rounded-lg block p-2.5"
 		placeholder="Search item"
 		on:input={onSearch}
 		on:focus={onSearch}

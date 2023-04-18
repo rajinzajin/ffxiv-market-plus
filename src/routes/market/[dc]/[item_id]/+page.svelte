@@ -55,36 +55,40 @@
 </script>
 
 <div>
-	<div
-		class="h-100 py-2 mb-6 px-5 w-96 max-w-full items-center justify-center rounded-2xl bg-item"
-	>
-		<div class="w-full mb-4">
-			<ItemSearchBar on_select_item_callback={onSearchItemSelect} />
+	<div class="flex justify-between">
+		<div class="flex">
+			<div class="relative">
+				<CardLoading show={itemLoading} />
+				<img
+					class="h-[6rem]"
+					src={getItemImageUrl(item_detail.id)}
+					alt={item_detail.Name}
+				/>
+			</div>
+			<div class="ml-5 font-display">
+				<h1 class="text-white text-4xl font-black my-auto">
+					{item_detail.Name}
+				</h1>
+				<h1 class="text-gray-400 text-lg font-black my-auto">
+					{item_detail.Description !== null ? item_detail.Description : ""}
+				</h1>
+			</div>
+		</div>
+		<div
+			class="px-2 w-96 h-[3.7rem] items-center justify-center rounded-2xl bg-item"
+		>
+			<div class="w-full h-full flex items-center">
+				<ItemSearchBar on_select_item_callback={onSearchItemSelect} />
+			</div>
 		</div>
 	</div>
 
-	<div class="flex">
-		<div class="relative">
-			<CardLoading show={itemLoading} />
-			<img
-				class="h-[6rem]"
-				src={getItemImageUrl(item_detail.id)}
-				alt={item_detail.Name}
-			/>
-		</div>
-		<div class="ml-5 font-display">
-			<h1 class="text-white text-4xl font-black my-auto">
-				{item_detail.Name}
-			</h1>
-			<h1 class="text-gray-400 text-lg font-black my-auto">
-				{item_detail.Description !== null ? item_detail.Description : ""}
-			</h1>
-			<h1 class="text-gray-300 text-xl font-black">{data_center}</h1>
-		</div>
-	</div>
 	<div class="mt-6">
+		<h1 class="text-gray-300 text-xl font-black w-96 text-center">
+			{data_center}
+		</h1>
 		<div
-			class="h-100 p-5 w-96 max-w-full items-center justify-center rounded-2xl bg-item"
+			class="h-100 mt-4 p-5 w-96 max-w-full items-center justify-center rounded-2xl bg-item"
 		>
 			<div class="flex justify-between">
 				<h1 class="text-white font-display text-2xl font-bold">Lowest Price</h1>
