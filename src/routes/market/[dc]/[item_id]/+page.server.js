@@ -5,6 +5,7 @@ export async function load({ params }) {
 	var item_detail = await getItem(params.item_id)
 
 	return {
-		item_detail
+		item_detail,
+		data_center: params.dc
 	};
 }

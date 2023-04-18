@@ -6,34 +6,31 @@
 	import { main_dc } from "../../../../stores/dc_world_stores";
 	import CardLoading from "../../../../components/CardLoading.svelte";
 	import axios from "axios";
+	import { goto } from "$app/navigation";
 	export let data;
 
 	let itemLoading;
 	let listingData = {};
 
-	$: ({ nqLowest, nqHighest, hqLowest, hqHighest } = listingData)
-	$: ({ item_detail } = data);
-
+	$: ({ nqLowest, nqHighest, hqLowest, hqHighest } = listingData);
+	$: ({ data_center, item_detail } = data);
 	$: {
 		if (item_detail != null) {
 			itemLoading = false;
 		}
 	}
-
+	
 	function onSearchItemSelect(selected_item_id) {
 		if (item_detail.id != selected_item_id) {
 			itemLoading = true;
 		}
 	}
 
-	onMount(() => {
-		var unsubscribe_main_dc = main_dc.subscribe(async (value) => {
-			if (value != null) {
-				console.log(`${value.name} selected`);
-				var res = await axios.get(
-					`/api/get_market_listing/${value.name}/${item_detail.id}`
-				);
-				listingData = res.data;
+	onMount(async () => {
+		var unsubscribe_main_dc = main_dc.subscribe(async (dc) => {
+			if (dc != null) {
+				goto(`/market/${dc.name}/${item_detail.id}`);
+				await loadMarketData(dc.name, item_detail.id);
 			}
 		});
 
@@ -41,6 +38,10 @@
 			unsubscribe_main_dc();
 		};
 	});
+	async function loadMarketData(dc, item_id) {
+		var res = await axios.get(`/api/get_market_listing/${dc}/${item_id}`)
+		listingData = res.data
+	}
 </script>
 
 <div>
