@@ -3,9 +3,7 @@
 	import { page } from "$app/stores";
 	import DataCenterSelector from "../components/DataCenterSelector.svelte";
 	import WorldSelector from "../components/WorldSelector.svelte";
-	import {
-		filterWorldsByIDs,
-	} from "../utils/world_function";
+	import { filterWorldsByIDs } from "../utils/world_function";
 	import { onMount } from "svelte";
 	import {
 		data_center_store,
@@ -15,7 +13,7 @@
 		world_store,
 	} from "../stores/dc_world_stores";
 	import { marketable_items } from "../stores/item_stores";
-
+	import { title } from "../stores/stores";
 	export let data;
 	let { data_centers, worlds } = data;
 
@@ -42,6 +40,10 @@
 		main_world.set(available_worlds[0]);
 	});
 </script>
+
+<svelte:head>
+	<title>{$title}</title>
+</svelte:head>
 
 <button
 	data-drawer-target="logo-sidebar"
@@ -140,7 +142,7 @@
 	<slot />
 	<div class="flex mt-[4rem]">
 		<div
-			class="ml-3 pr-6 font-body text-left text-gray-400 font-semibold text-md border-gray-500 border-r"
+			class="pr-6 font-body text-left text-gray-400 font-semibold text-md border-gray-500 border-r"
 		>
 			Created by RajinZajin
 			<br />XIV Market+ is not affiliated with SQUARE ENIX.
@@ -152,22 +154,41 @@
 			of Square Enix Co., Ltd.
 		</div>
 
-		<div class="px-6 border-gray-500 border-r flex items-center justify-center">
-			<a
-				class="font-body text-gray-400 hover:text-white"
-				href="https://github.com/rajinzajin/ffxiv-market-plus"
-				target="_blank"
-			>
-				<div class="flex items-center">
-					<i class="fa fa-github text-3xl mr-3" />Github
+		<div class="px-6 border-gray-500 border-r flex items-center">
+			<div>
+				<div class="flex items-center justify-center mb-5">
+					<a
+						class="font-body text-gray-400 hover:text-white"
+						href="https://github.com/rajinzajin/ffxiv-market-plus"
+						target="_blank"
+					>
+						<div class="flex items-center">
+							<i class="fa fa-github text-3xl mr-3" />Github
+						</div>
+					</a>
 				</div>
-			</a>
+				<div class="flex justify-center">
+					<a
+						class="font-body text-gray-400 hover:text-white"
+						href="/privacy-policy">Privacy Policy</a
+					>
+				</div>
+
+				<div class="flex justify-center mt-2">
+					<a
+						target="_blank"
+						class="font-body text-gray-400 hover:text-white"
+						href="https://github.com/rajinzajin/ffxiv-market-plus/blob/main/LICENSE"
+						>MIT License</a
+					>
+				</div>
+			</div>
 		</div>
-		<div
-			class="px-6 text-lg text-gray-400 flex items-center justify-center"
-		>
-			Powered by<a href="https://universalis.app/" class="hover:text-white font-semibold" target="_blank"
-				>&nbsp;Universalis</a
+		<div class="px-6 text-lg text-gray-400 flex items-center justify-center">
+			Powered by<a
+				href="https://universalis.app/"
+				class="hover:text-white font-semibold"
+				target="_blank">&nbsp;Universalis</a
 			>
 		</div>
 	</div>

@@ -3,9 +3,11 @@
 	import MarketEvents from "../components/MarketEvents.svelte";
 	import { main_dc } from "../stores/dc_world_stores";
 	import ItemSearchBar from "../components/ItemSearchBar.svelte";
+	import { title } from "../stores/stores";
 
 	let main_data_center;
 
+	title.set("Home");
 	onMount(() => {
 		main_dc.subscribe((value) => (main_data_center = value));
 	});
@@ -28,7 +30,6 @@
 		</div>
 	</div>
 </div>
-
 
 <style lang="postcss">
 	/* :global(html) {

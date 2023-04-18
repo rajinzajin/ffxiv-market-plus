@@ -7,6 +7,7 @@
 	import CardLoading from "../../../../components/CardLoading.svelte";
 	import axios from "axios";
 	import { goto } from "$app/navigation";
+	import { title } from "../../../../stores/stores";
 	export let data;
 
 	let itemLoading;
@@ -20,6 +21,7 @@
 			itemLoading = false;
 		}
 	}
+	$: title.set(item_detail.Name);
 
 	async function onSearchItemSelect(selected_item_id) {
 		if (item_detail.id != selected_item_id) {
@@ -85,7 +87,7 @@
 
 	<div class="mt-6">
 		<h1 class="text-white text-2xl font-[700] w-96 text-center">
-		  {data_center} 
+			{data_center}
 		</h1>
 		<div
 			class="h-100 mt-4 p-5 w-96 max-w-full items-center justify-center rounded-2xl bg-item"
