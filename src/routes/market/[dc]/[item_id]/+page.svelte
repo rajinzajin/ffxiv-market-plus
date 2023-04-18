@@ -41,10 +41,16 @@
 		};
 	});
 	async function loadMarketData(dc, item_id) {
-		marketLoading = true
+		marketLoading = true;
 		var res = await axios.get(`/api/get_market_listing/${dc}/${item_id}`);
 		listingData = res.data;
-		marketLoading = false
+		marketLoading = false;
+	}
+
+	async function onClickRefresh() {
+		if (marketLoading) return;
+
+		await loadMarketData(data_center, item_detail.id);
 	}
 </script>
 
@@ -79,7 +85,18 @@
 		<div
 			class="h-100 p-5 w-96 max-w-full items-center justify-center rounded-2xl bg-item"
 		>
-			<h1 class="text-white font-display text-2xl font-bold">Lowest Price</h1>
+			<div class="flex justify-between">
+				<h1 class="text-white font-display text-2xl font-bold">Lowest Price</h1>
+				<span
+					on:click={onClickRefresh}
+					on:keyup={() => {}}
+					class="{marketLoading
+						? 'animate-spin'
+						: ''} text-white select-none cursor-pointer text-3xl font-black material-symbols-outlined"
+				>
+					refresh
+				</span>
+			</div>
 
 			<div class="relative">
 				<CardLoading show={marketLoading} />
@@ -95,6 +112,7 @@
 			class="h-100 p-5 w-96 max-w-full items-center justify-center rounded-2xl bg-item mt-6"
 		>
 			<h1 class="text-white font-display text-2xl font-bold">Highest Price</h1>
+
 			<div class="relative">
 				<CardLoading show={marketLoading} />
 				<LhPriceCard
