@@ -6,9 +6,9 @@ export async function getItemHistory(item_id) {
 	);
     return res.data
 }
-export async function getItemMarketData(item_id, dc = "Materia") {
+export async function getItemMarketData(item_id, dc = "Materia", fields="") {
 	var res = await axios(
-		`https://universalis.app/api/${dc}/${item_id}?entries=1800`
+		`https://universalis.app/api/${dc}/${item_id}?entries=1800&fields=${fields}`
 	);
     return res.data
 }

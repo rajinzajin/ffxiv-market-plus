@@ -5,7 +5,7 @@ import { getHighestPriceItem, getLowestPriceItem } from "../../../../../utils/it
 
 /** @type {import('./$types').RequestHandler} */
 export async function GET({ params }) {
-	var market_data = await getItemMarketData(params.item_id, params.dc);
+	var market_data = await getItemMarketData(params.item_id, params.dc, "listings.pricePerUnit,listings.hq,listings.quantity,listings.worldName");
     
 	var hqList = filterArray(market_data.listings, { hq: true });
 	var nqList = filterArray(market_data.listings, { hq: false });
