@@ -5,26 +5,35 @@
 	import { onMount } from "svelte";
 	import { main_dc } from "../../../../stores/dc_world_stores";
 	import CardLoading from "../../../../components/CardLoading.svelte";
+	import axios from "axios";
 	export let data;
 
 	let itemLoading;
+	let listingData = {};
+
+	$: ({ nqLowest, nqHighest, hqLowest, hqHighest } = listingData)
+	$: ({ item_detail } = data);
 
 	$: {
-		if (data.item_detail != null) {
+		if (item_detail != null) {
 			itemLoading = false;
 		}
 	}
 
 	function onSearchItemSelect(selected_item_id) {
-		if (data.item_detail.id != selected_item_id) {
+		if (item_detail.id != selected_item_id) {
 			itemLoading = true;
 		}
 	}
 
 	onMount(() => {
-		var unsubscribe_main_dc = main_dc.subscribe((value) => {
+		var unsubscribe_main_dc = main_dc.subscribe(async (value) => {
 			if (value != null) {
 				console.log(`${value.name} selected`);
+				var res = await axios.get(
+					`/api/get_market_listing/${value.name}/${item_detail.id}`
+				);
+				listingData = res.data;
 			}
 		});
 
@@ -46,16 +55,18 @@
 	<div class="flex">
 		<div class="relative">
 			<CardLoading show={itemLoading} />
-			<img class="h-20" src={getItemImageUrl(data.item_id)} alt={data.name} />
+			<img
+				class="h-20"
+				src={getItemImageUrl(item_detail.id)}
+				alt={item_detail.Name}
+			/>
 		</div>
 		<div class="ml-5 font-display">
 			<h1 class="text-white text-4xl font-black my-auto">
-				{data.name}
+				{item_detail.Name}
 			</h1>
 			<h1 class="text-gray-400 text-lg font-black my-auto">
-				{data.item_detail.Description !== null
-					? data.item_detail.Description
-					: ""}
+				{item_detail.Description !== null ? item_detail.Description : ""}
 			</h1>
 		</div>
 	</div>
@@ -65,16 +76,8 @@
 		>
 			<h1 class="text-white font-display text-2xl font-bold">Lowest Price</h1>
 
-			<LhPriceCard
-				color="text-money"
-				title="Normal Quality"
-				item={data.nqLowest}
-			/>
-			<LhPriceCard
-				color="text-money"
-				title="High Quality"
-				item={data.hqLowest}
-			/>
+			<LhPriceCard color="text-money" title="Normal Quality" item={nqLowest} />
+			<LhPriceCard color="text-money" title="High Quality" item={hqLowest} />
 		</div>
 		<div
 			class="h-100 p-5 w-96 max-w-full items-center justify-center rounded-2xl bg-item mt-6"
@@ -83,13 +86,9 @@
 			<LhPriceCard
 				color="text-money2"
 				title="Normal Quality"
-				item={data.nqHighest}
+				item={nqHighest}
 			/>
-			<LhPriceCard
-				color="text-money2"
-				title="High Quality"
-				item={data.hqHighest}
-			/>
+			<LhPriceCard color="text-money2" title="High Quality" item={hqHighest} />
 		</div>
 	</div>
 </div>
