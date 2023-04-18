@@ -58,20 +58,20 @@
 
 <div>
 	<div class="flex justify-between">
-		<div class="flex">
+		<div class="flex items-center">
 			<div class="relative">
 				<CardLoading show={itemLoading} />
 				<img
-					class="h-[6rem]"
+					class="h-[6rem] w-[6rem] min-h-[6rem] min-w-[6rem]"
 					src={getItemImageUrl(item_detail.id)}
 					alt={item_detail.Name}
 				/>
 			</div>
 			<div class="ml-5 font-display">
-				<h1 class="text-white text-4xl font-black my-auto">
+				<h1 class="text-white text-4xl font-black">
 					{item_detail.Name}
 				</h1>
-				<h1 class="text-gray-400 text-lg font-black my-auto">
+				<h1 class="text-gray-400 text-lg font-black">
 					{item_detail.Description !== null ? item_detail.Description : ""}
 				</h1>
 			</div>
