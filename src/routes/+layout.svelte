@@ -5,7 +5,6 @@
 	import WorldSelector from "../components/WorldSelector.svelte";
 	import {
 		filterWorldsByIDs,
-		getWorldNameFromMapping,
 	} from "../utils/world_function";
 	import { onMount } from "svelte";
 	import {
