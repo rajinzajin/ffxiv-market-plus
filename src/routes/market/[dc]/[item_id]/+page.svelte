@@ -10,6 +10,7 @@
 	export let data;
 
 	let itemLoading;
+	let marketLoading = true;
 	let listingData = {};
 
 	$: ({ nqLowest, nqHighest, hqLowest, hqHighest } = listingData);
@@ -19,10 +20,11 @@
 			itemLoading = false;
 		}
 	}
-	
-	function onSearchItemSelect(selected_item_id) {
+
+	async function onSearchItemSelect(selected_item_id) {
 		if (item_detail.id != selected_item_id) {
 			itemLoading = true;
+			await loadMarketData(data_center, selected_item_id);
 		}
 	}
 
@@ -39,8 +41,10 @@
 		};
 	});
 	async function loadMarketData(dc, item_id) {
-		var res = await axios.get(`/api/get_market_listing/${dc}/${item_id}`)
-		listingData = res.data
+		marketLoading = true
+		var res = await axios.get(`/api/get_market_listing/${dc}/${item_id}`);
+		listingData = res.data;
+		marketLoading = false
 	}
 </script>
 
@@ -77,19 +81,33 @@
 		>
 			<h1 class="text-white font-display text-2xl font-bold">Lowest Price</h1>
 
-			<LhPriceCard color="text-money" title="Normal Quality" item={nqLowest} />
-			<LhPriceCard color="text-money" title="High Quality" item={hqLowest} />
+			<div class="relative">
+				<CardLoading show={marketLoading} />
+				<LhPriceCard
+					color="text-money"
+					title="Normal Quality"
+					item={nqLowest}
+				/>
+				<LhPriceCard color="text-money" title="High Quality" item={hqLowest} />
+			</div>
 		</div>
 		<div
 			class="h-100 p-5 w-96 max-w-full items-center justify-center rounded-2xl bg-item mt-6"
 		>
 			<h1 class="text-white font-display text-2xl font-bold">Highest Price</h1>
-			<LhPriceCard
-				color="text-money2"
-				title="Normal Quality"
-				item={nqHighest}
-			/>
-			<LhPriceCard color="text-money2" title="High Quality" item={hqHighest} />
+			<div class="relative">
+				<CardLoading show={marketLoading} />
+				<LhPriceCard
+					color="text-money2"
+					title="Normal Quality"
+					item={nqHighest}
+				/>
+				<LhPriceCard
+					color="text-money2"
+					title="High Quality"
+					item={hqHighest}
+				/>
+			</div>
 		</div>
 	</div>
 </div>
