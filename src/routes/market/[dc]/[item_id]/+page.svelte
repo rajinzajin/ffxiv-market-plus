@@ -28,7 +28,7 @@
 		}
 	}
 
-	onMount(async () => {
+	onMount(() => {
 		var unsubscribe_main_dc = main_dc.subscribe(async (dc) => {
 			if (dc != null) {
 				goto(`/market/${dc.name}/${item_detail.id}`);
