@@ -15,11 +15,30 @@
 	onMount(() => {
 		world_store.subscribe((value) => (worlds = value));
 		main_world.subscribe((value) => (m_world = value));
+
+		document.addEventListener("click", handleClick);
+		return () => {
+			document.removeEventListener("click", handleClick);
+		};
 	});
+
+	function handleClick(event) {
+		const world_result_element = document.getElementById(
+			"world_result_element"
+		);
+		const world_button = document.getElementById("world_button");
+		if (
+			!world_result_element.contains(event.target) &&
+			!world_button.contains(event.target)
+		) {
+			dropdownOpened = false;
+		}
+	}
 </script>
 
 <div>
 	<button
+		id="world_button"
 		data-dropdown-toggle="dropdown"
 		class="w-full relative text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-md font-body font-[700] px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
 		type="button"
@@ -43,7 +62,7 @@
 	<!-- Dropdown menu -->
 	<div class="relative">
 		<div
-			id="dropdown"
+			id="world_result_element"
 			class="{dropdownOpened
 				? ''
 				: 'hidden'} w-full absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700"
@@ -52,7 +71,9 @@
 				class="w-full py-3 bg-secondary text-white"
 				aria-labelledby="dropdownDefaultButton"
 			>
-				<h1 class="select-none text-gray-400 font-display font-bold text-lg ml-5 mt-3 mb-1">
+				<h1
+					class="select-none text-gray-400 font-display font-bold text-lg ml-5 mt-3 mb-1"
+				>
 					World
 				</h1>
 				{#each worlds as world}
