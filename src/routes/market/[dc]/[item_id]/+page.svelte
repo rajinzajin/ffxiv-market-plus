@@ -2,7 +2,7 @@
 	import LhPriceCard from "../../../../components/LHPriceCard.svelte";
 	import { getItemImageUrl } from "../../../../utils/item_utils.js";
 	import ItemSearchBar from "../../../../components/ItemSearchBar.svelte";
-	import { afterUpdate, beforeUpdate, onMount } from "svelte";
+	import { onMount } from "svelte";
 	import { main_dc } from "../../../../stores/dc_world_stores";
 	import CardLoading from "../../../../components/CardLoading.svelte";
 	export let data;
