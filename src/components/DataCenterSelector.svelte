@@ -51,7 +51,7 @@
 				class="w-full py-3 bg-secondary text-white"
 				aria-labelledby="dropdownDefaultButton"
 			>
-				<h1 class="text-gray-400 font-display font-bold text-lg ml-5 mt-3 mb-1">
+				<h1 class="select-none text-gray-400 font-display font-bold text-lg ml-5 mt-3 mb-1">
 					Data Center
 				</h1>
 				{#each data_centers as data_center}
@@ -59,7 +59,7 @@
 						<div
 							on:click={() => selectDC(data_center)}
 							on:keydown={() => {}}
-							class="mx-2 h-10 rounded-lg pl-3 cursor-pointer flex items-center hover:bg-blue-700"
+							class="select-none mx-2 h-10 rounded-lg pl-3 cursor-pointer flex items-center hover:bg-blue-700"
 						>
 							{data_center.name}
 						</div>
