@@ -11,7 +11,7 @@
 	});
 </script>
 
-<div class="flex justify-center h-[40rem] items-center">
+<div class="flex h-[40rem]">
 	<div class="bg-secondary">
 		<div class="h-full">
 			<div

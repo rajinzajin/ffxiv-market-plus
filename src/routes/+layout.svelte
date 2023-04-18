@@ -72,18 +72,22 @@
 	class="fixed top-0 left-0 z-40 w-[25rem] h-screen transition-transform -translate-x-full sm:translate-x-0"
 	aria-label="Sidebar"
 >
-	<div class="h-full px-6 py-4 overflow-y-auto bg-primary">
+	<div class="h-full px-6 py-9 overflow-y-auto bg-primary">
 		<a href="/" class="mb-5 mt-3 w-full">
-			<img
+			<!-- <img
 				src="https://flowbite.com/docs/images/logo.svg"
 				class="h-20 mx-auto mt-8"
 				alt="Flowbite Logo"
-			/>
-			<div
-				class="relative mt-4 text-center text-2xl font-[800] font-display dark:text-white"
-			>
-				XIV Market
-				<div class="absolute text-blue-400 text-6xl top-0 right-[5.7rem]">+</div>
+			/> -->
+			<div class="py-12">
+				<div
+					class="relative text-center text-2xl font-[900] font-display dark:text-white"
+				>
+					XIV Market
+					<div class="absolute text-blue-400 text-6xl top-0 right-[5.4rem]">
+						+
+					</div>
+				</div>
 			</div>
 		</a>
 		<div class="ml-2 mt-9 grid grid-cols-2 gap-3">
@@ -135,12 +139,12 @@
 </aside>
 <div class="sm:ml-[25rem] px-6 py-8">
 	<slot />
-	<div class="flex mt-7">
+	<div class="flex mt-[4rem]">
 		<div
 			class="ml-3 pr-6 font-body text-left text-gray-400 font-semibold text-md border-gray-500 border-r"
 		>
 			Created by RajinZajin
-			<br />FFXIV Market+ is not affiliated with SQUARE ENIX.
+			<br />XIV Market+ is not affiliated with SQUARE ENIX.
 			<br />
 			<br />© 2010 - 2023 SQUARE ENIX CO., LTD. All Rights Reserved.
 			<br />FINAL FANTASY, FINAL FANTASY XIV, FFXIV are registered trademarks or
@@ -152,7 +156,7 @@
 		<div class="px-6 border-gray-500 border-r flex items-center justify-center">
 			<a
 				class="font-body text-gray-400 hover:text-white"
-				href="https://github.com"
+				href="https://github.com/rajinzajin/ffxiv-market-plus"
 				target="_blank"
 			>
 				<div class="flex items-center">
@@ -160,8 +164,12 @@
 				</div>
 			</a>
 		</div>
-		<div class="px-6 border-gray-500 border-r flex items-center justify-center">
-			
+		<div
+			class="px-6 text-lg text-gray-400 flex items-center justify-center"
+		>
+			Powered by<a href="https://universalis.app/" class="hover:text-white font-semibold" target="_blank"
+				>&nbsp;Universalis</a
+			>
 		</div>
 	</div>
 </div>
