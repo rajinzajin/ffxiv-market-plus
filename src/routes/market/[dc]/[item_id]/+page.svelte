@@ -67,7 +67,7 @@
 		<div class="relative">
 			<CardLoading show={itemLoading} />
 			<img
-				class="h-20"
+				class="h-[6rem]"
 				src={getItemImageUrl(item_detail.id)}
 				alt={item_detail.Name}
 			/>
@@ -79,6 +79,7 @@
 			<h1 class="text-gray-400 text-lg font-black my-auto">
 				{item_detail.Description !== null ? item_detail.Description : ""}
 			</h1>
+			<h1 class="text-gray-300 text-xl font-black">{data_center}</h1>
 		</div>
 	</div>
 	<div class="mt-6">
