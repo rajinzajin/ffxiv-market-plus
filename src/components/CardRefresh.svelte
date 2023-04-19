@@ -8,7 +8,9 @@
 	<div class="flex justify-between">
 		<h1 class="text-white font-display text-2xl font-bold">{title}</h1>
 		<span
-			on:click={onRefresh}
+			on:click={() => {
+				if (!isLoading) onRefresh();
+			}}
 			on:keyup={() => {}}
 			class="{isLoading
 				? 'animate-spin'
