@@ -13,19 +13,20 @@
 	});
 </script>
 
-<div class="flex h-[40rem]">
+<div class="h-[40rem]">
 	<div class="bg-secondary">
 		<div class="h-full">
-			<div
-				class="h-100 p-5 w-[40rem] max-w-full items-center justify-center rounded-2xl bg-item"
-			>
-				<h1 class="text-white text-center font-display font-black text-2xl">
-					Search Item
-				</h1>
-				<div class="mt-5">
-					<ItemSearchBar />
+			<div class="grid grid-cols-12">
+				<div class="h-100 col-span-12 xl:col-span-6 p-5 items-center justify-center rounded-2xl bg-item">
+					<h1 class="text-white text-center font-display font-black text-2xl">
+						Search Item
+					</h1>
+					<div class="mt-5">
+						<ItemSearchBar />
+					</div>
 				</div>
 			</div>
+
 			<!-- <MarketEvents /> -->
 		</div>
 	</div>

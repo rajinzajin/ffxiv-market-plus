@@ -140,9 +140,9 @@
 </aside>
 <div class="sm:ml-[25rem] px-6 py-8">
 	<slot />
-	<div class="flex mt-[4rem]">
+	<div class="grid grid-cols-8 mt-[4rem] gap-y-9">
 		<div
-			class="pr-6 font-body text-left text-gray-400 font-semibold text-md border-gray-500 border-r"
+			class="text-center 2xl:text-left col-span-12 2xl:col-span-5 font-body text-gray-400 font-semibold text-md border-gray-500 2xl:border-r"
 		>
 			Created by RajinZajin
 			<br />XIV Market+ is not affiliated with SQUARE ENIX.
@@ -154,7 +154,7 @@
 			of Square Enix Co., Ltd.
 		</div>
 
-		<div class="px-6 border-gray-500 border-r flex items-center">
+		<div class="col-span-12 2xl:col-span-1 border-gray-500 2xl:border-r flex items-center justify-center">
 			<div>
 				<div class="flex items-center justify-center mb-5">
 					<a
@@ -184,12 +184,15 @@
 				</div>
 			</div>
 		</div>
-		<div class="px-6 text-lg text-gray-400 flex items-center justify-center">
-			Powered by<a
-				href="https://universalis.app/"
-				class="hover:text-white font-semibold"
-				target="_blank">&nbsp;Universalis</a
-			>
+		<div class="col-span-12 2xl:col-span-1 text-lg text-gray-400 flex items-center justify-center">
+			<div>
+				<div>Powered by</div>
+				<a
+					href="https://universalis.app/"
+					class="hover:text-white font-semibold"
+					target="_blank">&nbsp;Universalis</a
+				>
+			</div>
 		</div>
 	</div>
 </div>
