@@ -10,12 +10,13 @@
 		main_dc,
 		main_world,
 		world_mapping_store,
-		world_store,
+		world_store
 	} from "../stores/dc_world_stores";
 	import { marketable_items } from "../stores/item_stores";
 	import { title } from "../stores/stores";
-  import { getDataCenter } from "../utils/data_center_function";
-  import { get } from "svelte/store";
+	import { getDataCenter } from "../utils/data_center_function";
+	import { get } from "svelte/store";
+
 	export let data;
 	let { data_centers, worlds } = data;
 
@@ -35,7 +36,10 @@
 		world_mapping_store.set(data.world_mapping);
 		data_center_store.set(data_centers);
 
-		var available_worlds = filterWorldsByIDs(worlds, getDataCenter(data_centers, get(main_dc)).worlds);
+		var available_worlds = filterWorldsByIDs(
+			worlds,
+			getDataCenter(data_centers, get(main_dc)).worlds
+		);
 		world_store.set(available_worlds);
 		main_world.set(available_worlds[0]);
 	});

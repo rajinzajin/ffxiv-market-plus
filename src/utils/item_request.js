@@ -13,9 +13,9 @@ export async function getItemMarketData(item_id, dc = "Materia", fields="") {
     return res.data
 }
 
-export async function getMarketRecentUpdate(dc = "Materia") {
+export async function getMarketRecentUpdate(dc = "Materia", entries = 10) {
 	var res = await axios(
-		`https://universalis.app/api/v2/extra/stats/most-recently-updated?dcName=${dc}&entries=10`
+		`https://universalis.app/api/v2/extra/stats/most-recently-updated?dcName=${dc}&entries=${entries}`
 	);
-    return res.data
+    return res.data.items
 }

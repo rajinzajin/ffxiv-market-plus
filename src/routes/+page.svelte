@@ -7,23 +7,28 @@
 	import CardRefresh from "../components/CardRefresh.svelte";
 	import { getMarketRecentUpdate } from "../utils/item_request";
 	import { get } from "svelte/store";
-	let recent_updates;
-
-	$: {
-		if (recent_updates != null) console.log(recent_updates);
-	}
+	import { getItemImageUrl, getItemNameByID } from "../utils/item_utils";
+	import { marketable_items } from "../stores/item_stores";
+  import CardLoading from "../components/CardLoading.svelte";
+	let recent_updates = [];
+	let isLoading = true
 	title.set("Home");
 
 	async function loadRecentUpdate() {
-		recent_updates = await getMarketRecentUpdate(get(main_dc));
+		isLoading = true
+		recent_updates = await getMarketRecentUpdate(get(main_dc), 5);
+		isLoading = false
 	}
 
+	function onClickRefresh(){
+		loadRecentUpdate();
+	}
 	onMount(() => {
-		// loadRecentUpdate();
+		loadRecentUpdate();
 	});
 </script>
 
-<div class="h-[40rem]">
+<div>
 	<div class="bg-secondary">
 		<div class="h-full">
 			<div class="grid grid-cols-12">
@@ -40,7 +45,30 @@
 			</div>
 			<div class="mt-7 grid grid-cols-12">
 				<div class="col-span-12 xl:col-span-6">
-					<CardRefresh title="Recent Update">tes</CardRefresh>
+					<CardRefresh isLoading={isLoading} onRefresh={onClickRefresh} title="Recent Update - {$main_dc}">
+						<div class="mt-8 h-[28rem] relative">
+							<CardLoading show={isLoading}/>
+							{#each recent_updates as recent_update}
+								<a href="/market/{get(main_dc)}/{recent_update.itemID}">
+									<div
+										class="flex select-none p-2 my-4 items-center font-display text-white text-xl font-semibold border-2 border-secondary hover:border-gray-400 rounded-lg"
+									>
+										<img
+											class="w-14 h-14"
+											src={getItemImageUrl(recent_update.itemID)}
+											alt={recent_update.itemID}
+										/>
+										<h1 class="ml-4">
+											{getItemNameByID(
+												get(marketable_items),
+												recent_update.itemID
+											)}
+										</h1>
+									</div>
+								</a>
+							{/each}
+						</div>
+					</CardRefresh>
 				</div>
 			</div>
 			<!-- <MarketEvents /> -->
