@@ -9,22 +9,27 @@
 	import { get } from "svelte/store";
 	import { getItemImageUrl, getItemNameByID } from "../utils/item_utils";
 	import { marketable_items } from "../stores/item_stores";
-  import CardLoading from "../components/CardLoading.svelte";
+	import CardLoading from "../components/CardLoading.svelte";
 	let recent_updates = [];
-	let isLoading = true
+	let isLoading = true;
 	title.set("Home");
 
 	async function loadRecentUpdate() {
-		isLoading = true
+		isLoading = true;
 		recent_updates = await getMarketRecentUpdate(get(main_dc), 5);
-		isLoading = false
+		isLoading = false;
 	}
 
-	function onClickRefresh(){
+	function onClickRefresh() {
 		loadRecentUpdate();
 	}
 	onMount(() => {
-		loadRecentUpdate();
+		var unsubscribe = main_dc.subscribe(() => {
+			loadRecentUpdate();
+		});
+		return () => {
+			unsubscribe();
+		};
 	});
 </script>
 
@@ -45,9 +50,13 @@
 			</div>
 			<div class="mt-7 grid grid-cols-12">
 				<div class="col-span-12 xl:col-span-6">
-					<CardRefresh isLoading={isLoading} onRefresh={onClickRefresh} title="Recent Update - {$main_dc}">
+					<CardRefresh
+						{isLoading}
+						onRefresh={onClickRefresh}
+						title="Recent Update - {$main_dc}"
+					>
 						<div class="mt-8 h-[28rem] relative">
-							<CardLoading show={isLoading}/>
+							<CardLoading show={isLoading} />
 							{#each recent_updates as recent_update}
 								<a href="/market/{get(main_dc)}/{recent_update.itemID}">
 									<div
