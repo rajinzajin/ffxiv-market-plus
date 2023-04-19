@@ -14,13 +14,15 @@
 	} from "../stores/dc_world_stores";
 	import { marketable_items } from "../stores/item_stores";
 	import { title } from "../stores/stores";
+  import { getDataCenter } from "../utils/data_center_function";
+  import { get } from "svelte/store";
 	export let data;
 	let { data_centers, worlds } = data;
 
 	$: activeUrl = $page.url.pathname;
 
 	function onSelectDC(dc) {
-		main_dc.set(dc);
+		main_dc.set(dc.name);
 		var available_worlds = filterWorldsByIDs(worlds, dc.worlds);
 		world_store.set(available_worlds);
 		main_world.set(available_worlds[0]);
@@ -31,11 +33,9 @@
 	onMount(() => {
 		marketable_items.set(data.marketable_items);
 		world_mapping_store.set(data.world_mapping);
-		var initial_dc = data_centers[0];
 		data_center_store.set(data_centers);
-		main_dc.set(initial_dc);
 
-		var available_worlds = filterWorldsByIDs(worlds, initial_dc.worlds);
+		var available_worlds = filterWorldsByIDs(worlds, getDataCenter(data_centers, get(main_dc)).worlds);
 		world_store.set(available_worlds);
 		main_world.set(available_worlds[0]);
 	});
@@ -154,7 +154,9 @@
 			of Square Enix Co., Ltd.
 		</div>
 
-		<div class="col-span-12 2xl:col-span-1 border-gray-500 2xl:border-r flex items-center justify-center">
+		<div
+			class="col-span-12 2xl:col-span-1 border-gray-500 2xl:border-r flex items-center justify-center"
+		>
 			<div>
 				<div class="flex items-center justify-center mb-5">
 					<a
@@ -184,7 +186,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-span-12 2xl:col-span-1 text-lg text-gray-400 flex items-center justify-center">
+		<div
+			class="col-span-12 2xl:col-span-1 text-lg text-gray-400 flex items-center justify-center"
+		>
 			<div>
 				<div>Powered by</div>
 				<a

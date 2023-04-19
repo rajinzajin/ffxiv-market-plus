@@ -4,7 +4,6 @@ import { getWorlds } from "../utils/world_function";
 import marketable_items from "../data/marketable_items.json" assert { type: "json" };
 /** @type {import('./$types').LayoutServerLoad} */
 export async function load() {
-	
 	var data_centers = await getDataCenters();
 	var worlds = await getWorlds();
 	var world_mapping = await getArrayFromCSV(

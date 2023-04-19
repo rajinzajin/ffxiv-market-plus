@@ -12,7 +12,6 @@
 
 		socket = new WebSocket(addr);
 		socket.onopen = function () {
-			console.log("WebSocket Opened");
 			world_store.subscribe((new_world_list) => {
 				lastWorldList.forEach((world) => {
 					socket.send(BSON.serialize({ event: "unsubscribe", channel: `sales/add{world=${world.id}}` }));
@@ -29,8 +28,6 @@
 				var uint8Array = new Uint8Array(this.result);
 				var bsonData = BSON.deserialize(uint8Array);
 				var worldMapping = get(world_mapping_store)
-				// console.log(bsonData)
-				// console.log(getWorldNameFromMapping(worldMapping, bsonData.world));
 			};
 			reader.readAsArrayBuffer(event.data);
 		};

@@ -12,3 +12,10 @@ export async function getItemMarketData(item_id, dc = "Materia", fields="") {
 	);
     return res.data
 }
+
+export async function getMarketRecentUpdate(dc = "Materia") {
+	var res = await axios(
+		`https://universalis.app/api/v2/extra/stats/most-recently-updated?dcName=${dc}&entries=10`
+	);
+    return res.data
+}

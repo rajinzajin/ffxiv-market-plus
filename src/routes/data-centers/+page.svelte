@@ -1,10 +1,7 @@
 <script>
 	import { onMount } from "svelte";
-	import axios from "axios";
 
-	onMount(async () => {
-		// var res = await axios("/api/data-centers");
-		// console.log(res.data);
+	onMount(() => {
 	});
 </script>
 <div class="p-8 bg-secondary">

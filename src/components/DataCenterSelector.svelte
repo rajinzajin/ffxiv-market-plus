@@ -40,7 +40,7 @@
 		class="w-full relative text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-md font-body font-[700] px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
 		type="button"
 		on:click={() => (dropdownOpened = !dropdownOpened)}
-		><span>{selected_dc != null ? selected_dc.name : ""}</span>
+		><span>{selected_dc ?? ""}</span>
 		<svg
 			class="w-4 h-4 ml-2 absolute right-3"
 			aria-hidden="true"
