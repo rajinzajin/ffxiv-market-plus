@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    ports:
+      - 4173:4173
+    depends_on:
+      - mongo_importer
+      - mongodb
+    environment:
+      DATABASE_URL: mongodb://mongodb:27017/ffxiv
+    command: pnpm preview --host
+  mongodb:
+    image: mongo:5.0.16
+    ports:
+      - 27017:27017
+  mongo_importer:
+    build: ./database
+    command: mongoimport --host mongodb -d ffxiv -c item --type csv --file ffxiv_items.csv --headerline
+    depends_on:
+      - mongodb

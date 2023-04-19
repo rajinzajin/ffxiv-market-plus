@@ -21,9 +21,3 @@ COPY package.json pnpm-lock.yaml ./
 RUN pnpm install
 
 RUN pnpm run build
-# RUN npm prune --production # Remove dev dependencies
-
-EXPOSE 5173
-ENV HOST=0.0.0.0
-
-CMD [ "pnpm", "dev", "--host" ]
