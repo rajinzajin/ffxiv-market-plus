@@ -10,6 +10,7 @@
 	import { getItemImageUrl, getItemNameByID } from "../utils/item_utils";
 	import { marketable_items } from "../stores/item_stores";
 	import CardLoading from "../components/CardLoading.svelte";
+	import { getWorld } from "../utils/world_function";
 	let recent_updates = [];
 	let isLoading = true;
 	title.set("Home");
@@ -27,6 +28,8 @@
 		var unsubscribe = main_dc.subscribe(() => {
 			loadRecentUpdate();
 		});
+
+		console.log(getWorld(21));
 		return () => {
 			unsubscribe();
 		};
@@ -67,12 +70,17 @@
 											src={getItemImageUrl(recent_update.itemID)}
 											alt={recent_update.itemID}
 										/>
-										<h1 class="ml-4">
-											{getItemNameByID(
-												get(marketable_items),
-												recent_update.itemID
-											)}
-										</h1>
+										<div class="ml-4">
+											<h1>
+												{getItemNameByID(
+													get(marketable_items),
+													recent_update.itemID
+												)}
+											</h1>
+											<h1 class="font-semibold text-gray-400">
+												{getWorld(recent_update.worldID).name}
+											</h1>
+										</div>
 									</div>
 								</a>
 							{/each}
