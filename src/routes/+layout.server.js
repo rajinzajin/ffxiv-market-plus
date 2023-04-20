@@ -3,10 +3,8 @@ import marketable_items from "../data/marketable_items.json" assert { type: "jso
 
 /** @type {import('./$types').LayoutServerLoad} */
 export async function load() {
-	var worlds = await getWorlds();
 
 	return {
-		worlds,
 		marketable_items,
 	};
 }

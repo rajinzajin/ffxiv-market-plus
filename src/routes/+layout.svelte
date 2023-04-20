@@ -3,7 +3,7 @@
 	import { page } from "$app/stores";
 	import DataCenterSelector from "../components/DataCenterSelector.svelte";
 	import WorldSelector from "../components/WorldSelector.svelte";
-	import { filterWorldsByIDs } from "../utils/world_function";
+	import { filterWorldsByIDs, getWorlds } from "../utils/world_function";
 	import { onMount } from "svelte";
 	import {
 		main_dc,
@@ -16,7 +16,7 @@
 	import { get } from "svelte/store";
 
 	export let data;
-	let { worlds } = data;
+	let worlds = getWorlds();
 
 	$: activeUrl = $page.url.pathname;
 
