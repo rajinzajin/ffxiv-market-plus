@@ -1,9 +1,7 @@
 <script>
 	import { onMount } from "svelte";
 	import { BSON } from "../../node_modules/bson/lib/bson.mjs";
-	import { get } from "svelte/store";
-	import { world_mapping_store, world_store } from "../stores/dc_world_stores.js";
-  import { getWorldNameFromMapping } from "../utils/world_function.js";
+	import { world_store } from "../stores/dc_world_stores.js";
 
 	let socket;
 	let lastWorldList = [];
@@ -27,7 +25,6 @@
 			reader.onload = function () {
 				var uint8Array = new Uint8Array(this.result);
 				var bsonData = BSON.deserialize(uint8Array);
-				var worldMapping = get(world_mapping_store)
 			};
 			reader.readAsArrayBuffer(event.data);
 		};

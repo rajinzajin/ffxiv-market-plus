@@ -29,7 +29,6 @@
 			loadRecentUpdate();
 		});
 
-		console.log(getWorld(21));
 		return () => {
 			unsubscribe();
 		};

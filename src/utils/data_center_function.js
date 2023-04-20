@@ -1,12 +1,10 @@
-import axios from "axios";
 import { filterArray } from "./array_object.js";
+import data_centers from "../data/data_centers.json" assert { type: "json" };
 
-export async function getDataCenters() {
-	var res = await axios("https://universalis.app/api/v2/data-centers");
-	return res.data;
+export function getDataCenters() {
+	return data_centers;
 }
-
-export function getDataCenter(data_centers, name) {
+export function getDataCenter(name){
 	var filtered = filterArray(data_centers, { name });
 	return filtered.length > 0 ? filtered[0] : null;
 }
