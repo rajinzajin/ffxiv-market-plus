@@ -7,14 +7,10 @@ import marketable_items from "../data/marketable_items.json" assert { type: "jso
 export async function load() {
 	var data_centers = await getDataCenters();
 	var worlds = await getWorlds();
-	var world_mapping = await getArrayFromCSV(
-		"https://raw.githubusercontent.com/rajinzajin/ffxiv-data-csv/master/csv/World.csv"
-	);
 
 	return {
 		data_centers,
 		worlds,
-		world_mapping,
 		marketable_items,
 	};
 }
