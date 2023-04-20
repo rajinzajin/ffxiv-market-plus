@@ -77,10 +77,7 @@
 	class="fixed top-0 left-0 z-40 w-[25rem] h-screen transition-transform -translate-x-full sm:translate-x-0"
 	aria-label="Sidebar"
 >
-	<div
-	id="sidebar"
-		class="h-full px-6 py-9 overflow-y-auto"
-	>
+	<div id="sidebar" class="h-full px-6 py-9 overflow-y-auto">
 		<a href="/" class="mb-5 mt-3 w-full">
 			<!-- <img
 				src="https://flowbite.com/docs/images/logo.svg"
@@ -93,13 +90,13 @@
 				>
 					<!-- <div class="absolute w-full h-full bg-white bg-opacity-25">d</div> -->
 
-					XIV Market
+					XIV Market+
 
 					<!-- <div class="absolute font-body font-black text-blue-400 text-9xl top-[-50%] right-[8%]">
 						+
 					</div> -->
 				</div>
-				<div class="absolute h-[6rem] w-full opacity-80">
+				<!-- <div class="absolute h-[6rem] w-full opacity-80">
 					s
 					<svg class="w-full h-full">
 						<rect
@@ -121,7 +118,7 @@
 							style="fill:rgb(37, 99, 235 );"
 						/>
 					</svg>
-				</div>
+				</div> -->
 			</div>
 		</a>
 		<div class="ml-2 mt-9 grid grid-cols-2 gap-3">
@@ -173,9 +170,9 @@
 </aside>
 <div class="sm:ml-[25rem] px-6 py-8 bg-custom-ffxiv">
 	<slot />
-	<div class="grid grid-cols-8 mt-[4rem] gap-y-9">
+	<div class="grid grid-cols-8 mt-[4rem] gap-y-9 text-gray-300 font-[400]">
 		<div
-			class="text-center 2xl:text-left col-span-12 2xl:col-span-5 font-body text-gray-400 font-semibold text-md border-gray-500 2xl:border-r"
+			class="text-center 2xl:text-left col-span-12 2xl:col-span-5 font-body text-md border-gray-500 2xl:border-r"
 		>
 			Created by RajinZajin
 			<br />XIV Market+ is not affiliated with SQUARE ENIX.
@@ -193,7 +190,7 @@
 			<div>
 				<div class="flex items-center justify-center mb-5">
 					<a
-						class="font-body text-gray-400 hover:text-white"
+						class="font-body hover:text-white"
 						href="https://github.com/rajinzajin/ffxiv-market-plus"
 						target="_blank"
 					>
@@ -203,16 +200,15 @@
 					</a>
 				</div>
 				<div class="flex justify-center">
-					<a
-						class="font-body text-gray-400 hover:text-white"
-						href="/privacy-policy">Privacy Policy</a
+					<a class="font-body hover:text-white" href="/privacy-policy"
+						>Privacy Policy</a
 					>
 				</div>
 
 				<div class="flex justify-center mt-2">
 					<a
 						target="_blank"
-						class="font-body text-gray-400 hover:text-white"
+						class="font-body hover:text-white"
 						href="https://github.com/rajinzajin/ffxiv-market-plus/blob/main/LICENSE"
 						>MIT License</a
 					>
@@ -220,14 +216,14 @@
 			</div>
 		</div>
 		<div
-			class="col-span-12 2xl:col-span-1 text-lg text-gray-400 flex items-center justify-center"
+			class="col-span-12 2xl:col-span-1 text-lg flex items-center justify-center"
 		>
 			<div>
 				<div>Powered by</div>
 				<a
 					href="https://universalis.app/"
-					class="hover:text-white font-semibold"
-					target="_blank">&nbsp;Universalis</a
+					class="hover:text-white font-bold"
+					target="_blank">Universalis</a
 				>
 			</div>
 		</div>
