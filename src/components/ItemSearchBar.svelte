@@ -65,14 +65,14 @@
 	<div class="relative">
 		<div
 			id="search_result"
-			class="{searchResultVisible} bg-item absolute max-h-80 rounded-xl overflow-y-auto mt-2 p-2 w-full z-50 text-white"
+			class="{searchResultVisible} bg-primary absolute max-h-80 rounded-xl overflow-y-auto mt-2 p-2 w-full z-50 text-white"
 		>
 			<ul>
 				{#each searchResult as item}
-					<li class="h-auto cursor-pointer font-body font-bold text-gray-300">
+					<li class="group h-auto cursor-pointer font-body font-bold text-gray-300">
 						<a
 							href="/market/{main_data_center}/{item._id}"
-							class="flex m-auto hover:bg-primary py-2 rounded-lg"
+							class="flex m-auto group-hover:bg-higlight-1 py-2 rounded-lg"
 							on:keydown={() => {}}
 							on:click={() => {
 								onSelectItemSearch(item);
@@ -83,7 +83,7 @@
 								alt={item.en}
 								class="ml-3 h-10"
 							/>
-							<div class="flex-1 h-full ml-3 my-auto">{item.en}</div>
+							<div class="flex-1 h-full ml-3 my-auto group-hover:text-white">{item.en}</div>
 						</a>
 					</li>
 				{/each}
