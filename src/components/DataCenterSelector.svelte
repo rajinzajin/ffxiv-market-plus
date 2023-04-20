@@ -1,10 +1,10 @@
 <script>
 	import { onMount } from "svelte";
-	import { data_center_store, main_dc } from "../stores/dc_world_stores";
+	import { main_dc } from "../stores/dc_world_stores";
+	import { getDataCenters } from "../utils/data_center_function";
 	let dropdownOpened = false;
-	let data_centers = [];
+	let data_centers = getDataCenters();
 	let selected_dc;
-
 	export let on_select_dc;
 
 	function selectDC(dc) {
@@ -12,7 +12,6 @@
 		on_select_dc(dc);
 	}
 	onMount(() => {
-		data_center_store.subscribe((value) => (data_centers = value));
 		main_dc.subscribe((value) => (selected_dc = value));
 
 		document.addEventListener("click", handleClick);

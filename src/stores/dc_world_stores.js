@@ -1,8 +1,6 @@
 import { browser } from "$app/environment";
 import { writable } from "svelte/store";
 
-export const data_center_store = writable([]);
-
 export const main_world = writable(null);
 export const world_store = writable([]);
 

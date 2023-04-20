@@ -6,7 +6,6 @@
 	import { filterWorldsByIDs } from "../utils/world_function";
 	import { onMount } from "svelte";
 	import {
-		data_center_store,
 		main_dc,
 		main_world,
 		world_store,
@@ -17,7 +16,7 @@
 	import { get } from "svelte/store";
 
 	export let data;
-	let { data_centers, worlds } = data;
+	let { worlds } = data;
 
 	$: activeUrl = $page.url.pathname;
 
@@ -32,11 +31,10 @@
 	}
 	onMount(() => {
 		marketable_items.set(data.marketable_items);
-		data_center_store.set(data_centers);
 
 		var available_worlds = filterWorldsByIDs(
 			worlds,
-			getDataCenter(data_centers, get(main_dc)).worlds
+			getDataCenter(get(main_dc)).worlds
 		);
 		world_store.set(available_worlds);
 		main_world.set(available_worlds[0]);
