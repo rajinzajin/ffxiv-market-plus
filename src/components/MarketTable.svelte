@@ -10,20 +10,22 @@
 
 	let worlds_listing = [];
 
-	$: worlds_listing = updateData(listings)
+	$: worlds_listing = updateData(listings);
 
-	function updateData(_listings){
-		var result = []
+	function updateData(_listings) {
+		var result = [];
 		if (_listings.length > 0) {
 			var worlds = getDataCenter(get(main_dc)).worlds ?? [];
 			worlds.forEach((world_id) => {
 				var world = getWorld(world_id);
 				var worlds_listings = getWorldListing(world.name);
-				result.push(getLowestPriceItem(worlds_listings));
+				if (worlds_listings.length > 0) {
+					result.push(getLowestPriceItem(worlds_listings));
+				}
 			});
 			result.sort((a, b) => a.pricePerUnit - b.pricePerUnit);
 		}
-		return result
+		return result;
 	}
 
 	function getWorldListing(worldName) {
