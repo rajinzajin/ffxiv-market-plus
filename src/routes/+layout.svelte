@@ -10,7 +10,7 @@
 		main_dc,
 		main_world,
 		world_mapping_store,
-		world_store
+		world_store,
 	} from "../stores/dc_world_stores";
 	import { marketable_items } from "../stores/item_stores";
 	import { title } from "../stores/stores";
@@ -84,14 +84,37 @@
 				class="h-20 mx-auto mt-8"
 				alt="Flowbite Logo"
 			/> -->
-			<div class="py-12">
+			<div class="flex relative items-center w-full h-[9rem]">
 				<div
-					class="relative text-center text-2xl font-[900] font-display dark:text-white"
+					class="w-full text-center text-4xl font-[900] font-market dark:text-white"
 				>
+					<!-- <div class="absolute w-full h-full bg-white bg-opacity-25">d</div> -->
+					
 					XIV Market
-					<div class="absolute text-blue-400 text-6xl top-0 right-[5.4rem]">
+
+					<!-- <div class="absolute font-body font-black text-blue-400 text-9xl top-[-50%] right-[8%]">
 						+
-					</div>
+					</div> -->
+				</div>
+				<div class="absolute h-[6rem] w-full opacity-80">s
+					<svg class="w-full h-full">
+						<rect
+							width="280"
+							height="15"
+							x="30"
+							y="48"
+							stroke="white" stroke-width="2"
+							style="fill:rgb(37, 99, 235 );"
+						/>
+						<rect
+							width="15"
+							height="78"
+							x="280"
+							y="0"
+							stroke="white" stroke-width="2"
+							style="fill:rgb(37, 99, 235 );"
+						/>
+					</svg>
 				</div>
 			</div>
 		</a>
