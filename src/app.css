@@ -3,22 +3,43 @@
 @tailwind utilities;
 
 @layer base {
+    :root {
+        --bg-ffxiv-opacity: 0.9;
+        --rgb-primary: 32, 36, 66;
+        --rgb-secondary: 37, 41, 74;
+        --color-primary: rgb(var(--rgb-primary));
+        --color-secondary: rgb(var(--rgb-secondary));
+    }
+
     @font-face {
         font-family: Chelsea Market;
         src: url(/fonts/ChelseaMarket-Regular.ttf) format("opentype");
     }
+
     @font-face {
         font-family: Catamaran;
         src: url(/fonts/catamaran.woff2) format("woff2");
     }
+
     @font-face {
         font-family: Poppins;
         src: url(/fonts/Poppins-Regular.ttf) format("opentype");
     }
+
     @font-face {
         font-family: Poppins;
         src: url(/fonts/Poppins-Regular.ttf) format("opentype");
     }
+}
+
+#sidebar {
+    background-image: linear-gradient(rgba(var(--rgb-primary), var(--bg-ffxiv-opacity)), rgba(var(--rgb-primary), var(--bg-ffxiv-opacity))), url(/img/ffxiv-2.jpg);
+    background-position: 73% 15%;
+}
+
+.bg-custom-ffxiv {
+    background-image: linear-gradient(rgba(var(--rgb-secondary), var(--bg-ffxiv-opacity)), rgba(var(--rgb-secondary), var(--bg-ffxiv-opacity))), url(/img/ffxiv.webp);
+    background-position: 60% 15%;
 }
 
 .loader {
@@ -40,7 +61,7 @@
     }
 }
 
-.vertical-divider{
+.vertical-divider {
     border-left: 6px solid white;
     height: 100%;
 }

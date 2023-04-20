@@ -34,7 +34,7 @@
 </script>
 
 <div>
-	<div class="bg-secondary">
+	<div>
 		<div class="h-full">
 			<div class="grid grid-cols-12">
 				<div
