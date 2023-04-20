@@ -33,13 +33,13 @@
 }
 
 #sidebar {
-    background-image: linear-gradient(rgba(var(--rgb-primary), var(--bg-ffxiv-opacity)), rgba(var(--rgb-primary), var(--bg-ffxiv-opacity))), url(/img/ffxiv-2.jpg);
+    background-image: linear-gradient(rgba(var(--rgb-primary), var(--bg-ffxiv-opacity)), rgba(var(--rgb-primary), var(--bg-ffxiv-opacity))), url(/img/tiny/ffxiv-2.jpg);
     background-position: 73% 15%;
 }
 
 .bg-custom-ffxiv {
-    background-image: linear-gradient(rgba(var(--rgb-secondary), var(--bg-ffxiv-opacity)), rgba(var(--rgb-secondary), var(--bg-ffxiv-opacity))), url(/img/ffxiv.webp);
-    background-position: 60% 15%;
+    background-image: linear-gradient(rgba(var(--rgb-secondary), var(--bg-ffxiv-opacity)), rgba(var(--rgb-secondary), var(--bg-ffxiv-opacity))), url(/img/tiny/ffxiv.webp);
+    background-position: 55% 30%;
 }
 
 .loader {
