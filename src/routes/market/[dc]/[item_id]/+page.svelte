@@ -9,14 +9,13 @@
 	import { goto } from "$app/navigation";
 	import { title } from "../../../../stores/stores";
 	import MarketTable from "../../../../components/MarketTable.svelte";
-	import { get } from "svelte/store";
 	export let data;
 
 	let itemLoading;
 	let marketLoading = true;
 	let listingData = {};
-
-	$: ({ nqLowest, nqHighest, hqLowest, hqHighest } = listingData);
+	
+	$: ({ listings, nqLowest, nqHighest, hqLowest, hqHighest } = listingData);
 	$: ({ data_center, item_detail } = data);
 	$: {
 		if (item_detail != null) {
@@ -146,10 +145,11 @@
 		</div>
 		<div class="col-span-12 2xl:col-span-8">
 			<h1 class="text-white w-full text-2xl font-[700] text-center">
-				Listings
+				<!-- Listings --> &nbsp;
 			</h1>
 			<div class="mt-4">
-				<MarketTable dc={get(main_dc)} item_id={item_detail.id} />
+				<MarketTable {listings} />
+				<!-- <ListingTable dc={get(main_dc)} item_id={item_detail.id} /> -->
 			</div>
 		</div>
 	</div>

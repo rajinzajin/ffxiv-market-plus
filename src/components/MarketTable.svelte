@@ -1,47 +1,66 @@
 <script>
-	import axios from "axios";
-  import { formatNumberToGilString } from "../utils/format_function";
+	import { get } from "svelte/store";
+	import { main_dc } from "../stores/dc_world_stores";
+	import { getDataCenter } from "../utils/data_center_function";
+	import { formatNumberToGilString } from "../utils/format_function";
+	import { getWorld } from "../utils/world_function";
+	import { getLowestPriceItem } from "../utils/item_utils";
 
-	export let dc;
-	export let item_id;
+	export let listings = [];
 
-	let listings = [];
+	let worlds_listing = [];
 
-	if (dc != null && item_id != null) retrieveData();
+	$: worlds_listing = updateData(listings)
 
-	async function retrieveData() {
-		var res = await axios(`https://universalis.app/api/v2/${dc}/${item_id}?listings=10`);
-		listings = res.data.listings;
+	function updateData(_listings){
+		var result = []
+		if (_listings.length > 0) {
+			var worlds = getDataCenter(get(main_dc)).worlds ?? [];
+			worlds.forEach((world_id) => {
+				var world = getWorld(world_id);
+				var worlds_listings = getWorldListing(world.name);
+				result.push(getLowestPriceItem(worlds_listings));
+			});
+			result.sort((a, b) => a.pricePerUnit - b.pricePerUnit);
+		}
+		return result
+	}
+
+	function getWorldListing(worldName) {
+		return listings.filter((listing) => listing.worldName === worldName);
 	}
 </script>
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-	<table class="w-full font-display text-sm text-left text-gray-400 ">
+	<table class="w-full font-display text-sm text-left text-gray-300">
 		<thead
 			class="bg-item text-sm font-body text-gray-700 uppercase dark:text-gray-400"
 		>
 			<tr>
-				<th scope="col" class="px-6 py-3"> Retainer name </th>
-				<th scope="col" class="px-6 py-3"> Total </th>
 				<th scope="col" class="px-6 py-3"> World </th>
 				<th scope="col" class="px-6 py-3"> Price </th>
+				<th scope="col" class="px-6 py-3"> Quantity </th>
+				<th scope="col" class="px-6 py-3"> Quality </th>
 			</tr>
 		</thead>
 		<tbody>
-			{#each listings as listing}
+			{#each worlds_listing as world_listing}
 				<tr
-					class="bg-primary text-base border-b  dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+					class="bg-primary text-base border-b border-gray-700 hover:bg-gray-600"
 				>
 					<th
 						scope="row"
-						class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+						class="px-6 py-4 font-medium whitespace-nowrap text-white"
 					>
-						{listing.retainerName}
+						{world_listing.worldName}
 					</th>
-					<td class="px-6 py-4"> {listing.total} </td>
-					<td class="px-6 py-4"> {listing.worldName} </td>
-					<td class="px-6 py-4"> {formatNumberToGilString(listing.pricePerUnit)} </td>
-					
+					<td class="px-6 py-4">
+						{formatNumberToGilString(world_listing.pricePerUnit)}
+					</td>
+					<td class="px-6 py-4"> {world_listing.quantity} </td>
+					<td class="px-6 py-4">
+						{world_listing.hq === true ? "High" : "Normal"}
+					</td>
 				</tr>
 			{/each}
 		</tbody>
