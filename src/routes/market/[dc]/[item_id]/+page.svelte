@@ -86,7 +86,7 @@
 		</div>
 	</div>
 	<div class="grid grid-cols-12 gap-x-8 mt-6">
-		<div class="col-span-4">
+		<div class="col-span-12 2xl:col-span-4">
 			<h1 class="text-white w-full text-2xl font-[700] text-center">
 				{data_center}
 			</h1>
@@ -144,7 +144,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-span-8">
+		<div class="col-span-12 2xl:col-span-8">
 			<h1 class="text-white w-full text-2xl font-[700] text-center">
 				Listings
 			</h1>
