@@ -62,6 +62,7 @@
 				<img
 					class="h-[6rem] w-[6rem] min-h-[6rem] min-w-[6rem]"
 					src={getItemImageUrl(item_detail.id)}
+					onError="this.src='/img/error.png';"
 					alt={item_detail.Name}
 				/>
 			</div>
