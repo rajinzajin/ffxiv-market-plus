@@ -55,7 +55,7 @@
 </script>
 
 <div>
-	<div class="grid grid-cols-12 gap-y-6">
+	<div class="grid grid-cols-12 gap-y-6 gap-x-4">
 		<div class="col-span-12 2xl:col-span-9 flex items-center">
 			<div class="relative">
 				<CardLoading show={itemLoading} />
