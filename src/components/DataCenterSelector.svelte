@@ -62,7 +62,7 @@
 			id="dc_result_element"
 			class="{dropdownOpened
 				? ''
-				: 'hidden'} w-full absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700"
+				: 'hidden'} h-[30rem] overflow-y-auto w-full absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700"
 		>
 			<ul
 				class="w-full py-3 bg-secondary text-white"
