@@ -174,7 +174,7 @@
 		<div
 			class="text-center 2xl:text-left col-span-12 2xl:col-span-5 font-body text-md border-gray-500 2xl:border-r"
 		>
-			Created by RajinZajin
+			Created by <a class="text-white" href="https://github.com/rajinzajin" target="_blank">RajinZajin</a>
 			<br />XIV Market+ is not affiliated with SQUARE ENIX.
 			<br />
 			<br />© 2010 - 2023 SQUARE ENIX CO., LTD. All Rights Reserved.
