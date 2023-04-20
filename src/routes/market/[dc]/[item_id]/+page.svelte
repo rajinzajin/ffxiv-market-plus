@@ -55,8 +55,8 @@
 </script>
 
 <div>
-	<div class="flex justify-between">
-		<div class="flex items-center">
+	<div class="grid grid-cols-12 gap-y-6">
+		<div class="col-span-12 2xl:col-span-9 flex items-center">
 			<div class="relative">
 				<CardLoading show={itemLoading} />
 				<img
@@ -76,7 +76,7 @@
 			</div>
 		</div>
 		<div
-			class="px-2 w-96 h-[3.7rem] items-center justify-center rounded-2xl bg-item"
+			class="col-span-12 2xl:col-span-3 px-2 w-full h-[3.7rem] items-center justify-center rounded-2xl bg-item"
 		>
 			<div class="w-full h-full flex items-center">
 				<ItemSearchBar on_select_item_callback={onSearchItemSelect} />
