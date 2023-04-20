@@ -8,6 +8,8 @@
 	import axios from "axios";
 	import { goto } from "$app/navigation";
 	import { title } from "../../../../stores/stores";
+	import MarketTable from "../../../../components/MarketTable.svelte";
+	import { get } from "svelte/store";
 	export let data;
 
 	let itemLoading;
@@ -33,7 +35,7 @@
 	onMount(() => {
 		var unsubscribe_main_dc = main_dc.subscribe(async (dc) => {
 			goto(`/market/${dc}/${item_detail.id}`);
-				await loadMarketData(dc, item_detail.id);
+			await loadMarketData(dc, item_detail.id);
 		});
 
 		return () => {
@@ -83,54 +85,71 @@
 			</div>
 		</div>
 	</div>
+	<div class="grid grid-cols-12 gap-x-8 mt-6">
+		<div class="col-span-4">
+			<h1 class="text-white w-full text-2xl font-[700] text-center">
+				{data_center}
+			</h1>
+			<div
+				class="h-100 mt-4 p-5 w-full max-w-full items-center justify-center rounded-2xl bg-item"
+			>
+				<div class="flex justify-between">
+					<h1 class="text-white font-display text-2xl font-bold">
+						Lowest Price
+					</h1>
+					<span
+						on:click={onClickRefresh}
+						on:keyup={() => {}}
+						class="{marketLoading
+							? 'animate-spin'
+							: ''} text-white select-none cursor-pointer text-3xl font-black material-symbols-outlined"
+					>
+						refresh
+					</span>
+				</div>
 
-	<div class="mt-6">
-		<h1 class="text-white text-2xl font-[700] w-96 text-center">
-			{data_center}
-		</h1>
-		<div
-			class="h-100 mt-4 p-5 w-96 max-w-full items-center justify-center rounded-2xl bg-item"
-		>
-			<div class="flex justify-between">
-				<h1 class="text-white font-display text-2xl font-bold">Lowest Price</h1>
-				<span
-					on:click={onClickRefresh}
-					on:keyup={() => {}}
-					class="{marketLoading
-						? 'animate-spin'
-						: ''} text-white select-none cursor-pointer text-3xl font-black material-symbols-outlined"
-				>
-					refresh
-				</span>
+				<div class="relative">
+					<CardLoading show={marketLoading} />
+					<LhPriceCard
+						color="text-money"
+						title="Normal Quality"
+						item={nqLowest}
+					/>
+					<LhPriceCard
+						color="text-money"
+						title="High Quality"
+						item={hqLowest}
+					/>
+				</div>
 			</div>
+			<div
+				class="h-100 p-5 w-full max-w-full items-center justify-center rounded-2xl bg-item mt-6"
+			>
+				<h1 class="text-white font-display text-2xl font-bold">
+					Highest Price
+				</h1>
 
-			<div class="relative">
-				<CardLoading show={marketLoading} />
-				<LhPriceCard
-					color="text-money"
-					title="Normal Quality"
-					item={nqLowest}
-				/>
-				<LhPriceCard color="text-money" title="High Quality" item={hqLowest} />
+				<div class="relative">
+					<CardLoading show={marketLoading} />
+					<LhPriceCard
+						color="text-money2"
+						title="Normal Quality"
+						item={nqHighest}
+					/>
+					<LhPriceCard
+						color="text-money2"
+						title="High Quality"
+						item={hqHighest}
+					/>
+				</div>
 			</div>
 		</div>
-		<div
-			class="h-100 p-5 w-96 max-w-full items-center justify-center rounded-2xl bg-item mt-6"
-		>
-			<h1 class="text-white font-display text-2xl font-bold">Highest Price</h1>
-
-			<div class="relative">
-				<CardLoading show={marketLoading} />
-				<LhPriceCard
-					color="text-money2"
-					title="Normal Quality"
-					item={nqHighest}
-				/>
-				<LhPriceCard
-					color="text-money2"
-					title="High Quality"
-					item={hqHighest}
-				/>
+		<div class="col-span-8">
+			<h1 class="text-white w-full text-2xl font-[700] text-center">
+				Listings
+			</h1>
+			<div class="mt-4">
+				<MarketTable dc={get(main_dc)} item_id={item_detail.id} />
 			</div>
 		</div>
 	</div>
