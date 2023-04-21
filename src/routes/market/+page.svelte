@@ -1,23 +1,26 @@
 <script>
-	import LhPriceCard from "../../../../components/LHPriceCard.svelte";
-	import { getItemImageUrl } from "../../../../utils/item_utils.js";
-	import ItemSearchBar from "../../../../components/ItemSearchBar.svelte";
+	import LhPriceCard from "../../components/LHPriceCard.svelte";
+	import { getItemImageUrl } from "../../utils/item_utils.js";
+	import ItemSearchBar from "../../components/ItemSearchBar.svelte";
 	import { onMount } from "svelte";
-	import { main_dc } from "../../../../stores/dc_world_stores";
-	import CardLoading from "../../../../components/CardLoading.svelte";
+	import { main_dc } from "../../stores/dc_world_stores";
+	import CardLoading from "../../components/CardLoading.svelte";
 	import axios from "axios";
 	import { goto } from "$app/navigation";
-	import { title } from "../../../../stores/stores";
-	import MarketTable from "../../../../components/MarketTable.svelte";
-	export let data;
-
+	import { title } from "../../stores/stores";
+	import MarketTable from "../../components/MarketTable.svelte";
+	import { page } from "$app/stores";
+	
+	const url = $page.url
 	let itemLoading = true;
 	let marketLoading = true;
 	let listingData = {};
 	let item_detail;
 
+	let data_center = url.searchParams.get("dc")
+	let item_id = url.searchParams.get("item")
+
 	$: ({ listings, nqLowest, nqHighest, hqLowest, hqHighest } = listingData);
-	$: ({ data_center, item_id } = data);
 	
 	$: title.set(item_detail != null ? item_detail.Name : "");
 
@@ -31,7 +34,7 @@
 	onMount(() => {
 		getItemDetail(item_id);
 		var unsubscribe_main_dc = main_dc.subscribe(async (dc) => {
-			goto(`/market/${dc}/${item_id}`);
+			goto(`/market?dc=${dc}&item=${item_id}`);
 			await loadMarketData(dc, item_id);
 		});
 		return () => {

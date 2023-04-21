@@ -44,7 +44,7 @@
 		<div class="ml-5">
 			<h1 class="text-white font-display font-bold text-xl">{item_name}</h1>
 			<button
-				on:click={() => goto(`market/${get(main_dc)}/${item_id}`)}
+				on:click={() => goto(`market?dc=${get(main_dc)}&item${item_id}`)}
 				type="button"
 				class="text-white hover:border-blue-500 font-body text-base font-semibold mt-3 border-2 border-white rounded-lg px-5 py-2"
 				>Check Price</button

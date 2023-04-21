@@ -71,7 +71,7 @@
 				{#each searchResult as item}
 					<li class="group h-auto cursor-pointer font-body font-bold text-gray-300">
 						<a
-							href="/market/{main_data_center}/{item._id}"
+							href="/market?dc={main_data_center}&item={item._id}"
 							class="flex m-auto group-hover:bg-higlight-1 py-2 rounded-lg"
 							on:keydown={() => {}}
 							on:click={() => {
