@@ -9,8 +9,15 @@
         --rgb-secondary: 37, 41, 74;
         --color-primary: rgb(var(--rgb-primary));
         --color-secondary: rgb(var(--rgb-secondary));
-        
+
         --color-highlight-1: rgb(37, 99, 235);
+    }
+
+    @font-face {
+        font-family: 'Material Symbols Outlined';
+        font-style: normal;
+        font-weight: 400;
+        src: url(/fonts/Material-Symbols-Outlined.woff2) format('woff2');
     }
 
     @font-face {

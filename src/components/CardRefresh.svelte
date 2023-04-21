@@ -14,7 +14,7 @@
 			on:keyup={() => {}}
 			class="{isLoading
 				? 'animate-spin'
-				: ''} text-white select-none cursor-pointer text-3xl font-black material-symbols-outlined"
+				: ''} text-white select-none cursor-pointer text-3xl font-black font-material_icon"
 		>
 			refresh
 		</span>

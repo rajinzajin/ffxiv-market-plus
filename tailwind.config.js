@@ -16,7 +16,8 @@ export default {
 			fontFamily: {
 				display: "Catamaran, sans-serif",
 				body: "Poppins, sans-serif",
-				market: "Chelsea Market, cursive"
+				market: "Chelsea Market, cursive",
+				material_icon: "Material Symbols Outlined"
 			},
 		},
 		// colors: {
