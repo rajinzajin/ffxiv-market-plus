@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import item_names from "../data/item_names_min.json"
 export function convertToArray(jsonObjects) {
 	var itemsArray = Object.entries(jsonObjects).map(([key, value]) => {
 		return {
@@ -31,7 +31,11 @@ export function getItemNameByID(list_item, item_id) {
 
 	return list_item[item_id].en;
 }
+export function getItemName(item_id){
+	if (item_names[item_id] == null) return "";
 
+	return item_names[item_id].en;
+}
 export function getItemImageUrl(item_id) {
 	return `https://rajinzajin.github.io/ffxiv-assets/icon2x/${item_id}.png`;
 }

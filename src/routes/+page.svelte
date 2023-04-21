@@ -39,55 +39,64 @@
 	<div>
 		<div class="h-full">
 			<div class="grid grid-cols-12">
-				<div
-					class="h-100 col-span-12 xl:col-span-6 p-5 items-center justify-center rounded-2xl bg-item"
-				>
-					<h1 class="text-white text-center font-display font-black text-2xl">
-						Search Item
-					</h1>
-					<div class="mt-5">
-						<ItemSearchBar />
-					</div>
-				</div>
-			</div>
-			<div class="mt-7 grid grid-cols-12">
-				<div class="col-span-12 xl:col-span-6">
-					<CardRefresh
-						{isLoading}
-						onRefresh={onClickRefresh}
-						title="Recent Update - {$main_dc}"
-					>
-						<div class="mt-8 h-[28rem] relative">
-							<CardLoading show={isLoading} />
-							{#each recent_updates as recent_update}
-								<a href="/market/{get(main_dc)}/{recent_update.itemID}">
-									<div
-										class="flex select-none p-2 my-4 items-center font-display text-white text-xl font-semibold border-2 border-secondary hover:border-gray-400 rounded-lg"
-									>
-										<img
-											class="w-14 h-14"
-											src={getItemImageUrl(recent_update.itemID)}
-											alt={recent_update.itemID}
-										/>
-										<div class="ml-4">
-											<h1>
-												{getItemNameByID(
-													get(marketable_items),
-													recent_update.itemID
-												)}
-											</h1>
-											<h1 class="font-semibold text-gray-400">
-												{getWorld(recent_update.worldID).name}
-											</h1>
-										</div>
-									</div>
-								</a>
-							{/each}
+				<div class="col-span-12 2xl:col-span-6">
+					<div class="w-full">
+						<div
+							class="h-100 col-span-12 xl:col-span-6 p-5 items-center justify-center rounded-2xl bg-item"
+						>
+							<!-- <h1
+								class="text-white text-center font-display font-black text-2xl"
+							>
+								Search Item
+							</h1> -->
+							<div>
+								<ItemSearchBar />
+							</div>
 						</div>
-					</CardRefresh>
+					</div>
+					<div class="mt-7 w-full">
+						<MarketEvents />
+					</div>
+					<!-- <div class="mt-7 w-full">
+						<CardRefresh
+							{isLoading}
+							onRefresh={onClickRefresh}
+							title="Recent Update - {$main_dc}"
+						>
+							<div class="mt-8 h-[28rem] relative">
+								<CardLoading show={isLoading} />
+								{#each recent_updates as recent_update}
+									<a href="/market/{get(main_dc)}/{recent_update.itemID}">
+										<div
+											class="flex select-none p-2 my-4 items-center font-display text-white text-xl font-semibold border-2 border-secondary hover:border-gray-400 rounded-lg"
+										>
+											<img
+												class="w-14 h-14"
+												src={getItemImageUrl(recent_update.itemID)}
+												alt={recent_update.itemID}
+											/>
+											<div class="ml-4">
+												<h1>
+													{getItemNameByID(
+														get(marketable_items),
+														recent_update.itemID
+													)}
+												</h1>
+												<h1 class="font-semibold text-gray-400">
+													{getWorld(recent_update.worldID).name}
+												</h1>
+											</div>
+										</div>
+									</a>
+								{/each}
+							</div>
+						</CardRefresh>
+					</div> -->
+				</div>
+				<div class="col-span-6">
+					<!-- <MarketEvents /> -->
 				</div>
 			</div>
-			<!-- <MarketEvents /> -->
 		</div>
 	</div>
 </div>

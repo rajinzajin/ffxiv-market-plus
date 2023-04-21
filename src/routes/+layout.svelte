@@ -164,7 +164,7 @@
 		</ul>
 	</div>
 </aside>
-<div class="sm:ml-[25rem] px-6 py-8 bg-custom-ffxiv">
+<div class="sm:ml-[25rem] px-6 py-8 bg-custom-ffxiv min-h-[100vh]">
 	<slot />
 	<div class="grid grid-cols-8 mt-[4rem] gap-y-9 text-gray-300 font-[400]">
 		<div
