@@ -64,7 +64,7 @@
 	{#if selectedPrices.length > 0}
 		<table class="w-full font-display text-sm text-left text-gray-300">
 			<thead
-				class="bg-item text-sm font-body text-gray-700 uppercase dark:text-gray-400"
+				class="bg-item text-sm font-body uppercase text-gray-400"
 			>
 				<tr>
 					<th scope="col" class="px-6 py-3"> World </th>
@@ -97,7 +97,7 @@
 		</table>
 	{:else}
 		<div class="bg-item text-sm font-body uppercase text-gray-400 py-3">
-			<h1 class="font-body text-white font-semibold text-base text-center">
+			<h1 class="font-body font-semibold text-base text-center">
 				No Item Found.
 			</h1>
 		</div>
