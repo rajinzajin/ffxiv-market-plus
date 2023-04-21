@@ -77,7 +77,7 @@
 			</div>
 		</div>
 		<div
-			class="col-span-12 2xl:col-span-3 px-2 w-full h-[3.7rem] items-center justify-center rounded-2xl bg-item"
+			class="col-span-12 2xl:col-span-3 px-2 w-full h-[3.7rem] items-center justify-center"
 		>
 			<div class="w-full h-full flex items-center">
 				<ItemSearchBar on_select_item_callback={onSearchItemSelect} />

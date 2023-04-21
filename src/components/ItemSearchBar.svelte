@@ -56,7 +56,7 @@
 		autocomplete="off"
 		type="text"
 		id="search_input"
-		class="font-body h-14 bg-primary w-full outline-none focus:outline-none placeholder:text-gray-200 text-gray-200 text-base rounded-lg block p-2.5"
+		class="px-5 font-body h-14 bg-primary w-full outline-none focus:outline-none placeholder:text-gray-200 text-gray-200 text-base rounded-lg block p-2.5"
 		placeholder="Search item"
 		on:input={onSearch}
 		on:focus={onSearch}
