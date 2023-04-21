@@ -50,9 +50,9 @@
 			reader.readAsArrayBuffer(event.data);
 		};
 
-		return() => {
-			socket.close()
-		}
+		return () => {
+			socket.close();
+		};
 	});
 </script>
 
