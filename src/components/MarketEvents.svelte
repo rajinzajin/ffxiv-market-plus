@@ -1,10 +1,10 @@
 <script>
 	import { onMount } from "svelte";
 	import { BSON } from "../../node_modules/bson/lib/bson.mjs";
-	import { world_store } from "../stores/dc_world_stores.js";
+	import { main_dc, world_store } from "../stores/dc_world_stores.js";
 	import { getItemName } from "../utils/item_utils.js";
 	import { getWorld } from "../utils/world_function.js";
-
+	
 	const max_array = 10;
 	let socket;
 	let lastWorldList = [];
@@ -62,7 +62,7 @@
 			class="text-2xl text-center font-display font-black text-white bg-item"
 		>
 			<tr>
-				<th scope="col" class="px-6 py-3"> Recent activity </th>
+				<th scope="col" class="px-6 py-3"> Recent activity - {$main_dc}</th>
 			</tr>
 		</thead>
 		<tbody class="text-base font-body text-white">
