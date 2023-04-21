@@ -52,7 +52,7 @@
 							class="h-100 col-span-12 xl:col-span-6 p-5 items-center justify-center rounded-2xl bg-item"
 						>
 							<div
-								class="text-2xl text-center font-display font-bold text-white"
+								class="text-xl text-center font-display font-[400] text-white"
 							>
 								Search Item
 							</div>

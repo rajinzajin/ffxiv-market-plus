@@ -60,10 +60,10 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg h-full">
 	<table class="w-full text-sm text-left">
 		<thead
-			class="text-2xl text-center font-display font-black text-white bg-item"
+			class="text-xl text-center font-display text-white bg-item"
 		>
 			<tr>
-				<th scope="col" class="px-6 py-3"> Recent activity - {$main_dc}</th>
+				<th scope="col" class="px-6 py-3 font-[400]"> Recent activity - {$main_dc}</th>
 			</tr>
 		</thead>
 		<tbody class="text-base font-body text-white">

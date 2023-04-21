@@ -2,9 +2,10 @@
 	import axios from "axios";
 	import { getItemImageUrl, getItemName } from "../utils/item_utils";
 	import { onMount } from "svelte";
-  import { goto } from "$app/navigation";
-  import { get } from "svelte/store";
-  import { main_dc } from "../stores/dc_world_stores";
+	import { goto } from "$app/navigation";
+	import { get } from "svelte/store";
+	import { main_dc } from "../stores/dc_world_stores";
+	import CardLoading from "./CardLoading.svelte";
 
 	export let item_id = -1;
 	let item_name;
@@ -34,14 +35,18 @@
 		<div class="w-20 h-20">
 			{#if imageloaded}
 				<img class="w-full h-full" src={image_src} alt={item_id} />
+			{:else}
+				<div class="w-full h-full">
+					<CardLoading show={true} absolute={false} />
+				</div>
 			{/if}
 		</div>
 		<div class="ml-5">
-			<h1 class="text-white font-display font-bold text-2xl">{item_name}</h1>
+			<h1 class="text-white font-display font-bold text-xl">{item_name}</h1>
 			<button
-            on:click={()=>goto(`market/${get(main_dc)}/${item_id}`)}
+				on:click={() => goto(`market/${get(main_dc)}/${item_id}`)}
 				type="button"
-				class="text-white hover:border-blue-500 font-body text-base font-semibold mt-3 border-2 border-white rounded-lg px-5 py-1"
+				class="text-white hover:border-blue-500 font-body text-base font-semibold mt-3 border-2 border-white rounded-lg px-5 py-2"
 				>Check Price</button
 			>
 		</div>
