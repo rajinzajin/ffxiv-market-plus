@@ -11,7 +11,7 @@
 	import { marketable_items } from "../stores/item_stores";
 	import CardLoading from "../components/CardLoading.svelte";
 	import { getWorld } from "../utils/world_function";
-  import ListingTable from "../components/ListingTable.svelte";
+	import ListingTable from "../components/ListingTable.svelte";
 	let recent_updates = [];
 	let isLoading = true;
 	let selectedEvent = { listings: [] };
@@ -50,17 +50,17 @@
 						<div
 							class="h-100 col-span-12 xl:col-span-6 p-5 items-center justify-center rounded-2xl bg-item"
 						>
-							<!-- <h1
-								class="text-white text-center font-display font-black text-2xl"
+							<div
+								class="text-2xl text-center font-display font-bold text-white"
 							>
 								Search Item
-							</h1> -->
-							<div>
+							</div>
+							<div class="mt-1">
 								<ItemSearchBar />
 							</div>
 						</div>
 					</div>
-					<div class="mt-7 w-full">
+					<div class="mt-7 w-full h-[35rem]">
 						<MarketEvents onSelectEvent={(val) => (selectedEvent = val)} />
 					</div>
 					<!-- <div class="mt-7 w-full">
@@ -99,8 +99,8 @@
 						</CardRefresh>
 					</div> -->
 				</div>
-				<div class="col-span-6">
-					<ListingTable listings={selectedEventListings}/>
+				<div class="col-span-12 2xl:col-span-6">
+					<ListingTable listings={selectedEventListings} />
 				</div>
 			</div>
 		</div>

@@ -76,7 +76,7 @@
 			<tbody class="font-body">
 				{#each selectedPrices as item}
 					<tr
-						class="bg-primary text-base border-b border-gray-700 hover:bg-gray-600"
+						class="bg-primary text-base border-b border-gray-700 hover:bg-item"
 					>
 						<th
 							scope="row"
@@ -84,7 +84,7 @@
 						>
 							{item.worldName}
 						</th>
-						<td class="px-6 py-4">
+						<td class="px-6 py-4 text-yellow-200">
 							{formatNumberToGilString(item.pricePerUnit)}
 						</td>
 						<td class="px-6 py-4"> {item.quantity} </td>

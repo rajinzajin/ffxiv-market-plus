@@ -5,7 +5,7 @@
 	import { getItemName } from "../utils/item_utils.js";
 	import { getWorld } from "../utils/world_function.js";
 	
-	const max_array = 10;
+	const max_array = 8;
 	export let onSelectEvent
 
 	let socket;
@@ -42,7 +42,7 @@
 			reader.onload = function () {
 				var uint8Array = new Uint8Array(this.result);
 				var bsonData = BSON.deserialize(uint8Array);
-				if (m_events.length > max_array) {
+				if (m_events.length >= max_array) {
 					m_events.shift();
 				}
 				m_events.push(bsonData);
@@ -58,7 +58,7 @@
 	});
 </script>
 
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg h-[45rem]">
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg h-full">
 	<table class="w-full text-sm text-left">
 		<thead
 			class="text-2xl text-center font-display font-black text-white bg-item"
@@ -71,7 +71,7 @@
 			{#each [...m_events].reverse() as m_event}
 				<tr on:click={()=>onSelectEvent(m_event)} class="bg-primary hover:bg-item cursor-pointer">
 					<td class="px-6 py-4 font-[100]"
-						><span class="text-[#fcff2e]">{m_event.listings.length}</span>
+						><span class="text-yellow-300">{m_event.listings.length}</span>
 						listings of
 						<span class="text-[#71bfff]">{getItemName(m_event.item)}</span>
 						added to
