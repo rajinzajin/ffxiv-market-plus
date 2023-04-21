@@ -11,36 +11,40 @@
 	import MarketTable from "../../../../components/MarketTable.svelte";
 	export let data;
 
-	let itemLoading;
+	let itemLoading = true;
 	let marketLoading = true;
 	let listingData = {};
+	let item_detail;
 
 	$: ({ listings, nqLowest, nqHighest, hqLowest, hqHighest } = listingData);
-	$: ({ data_center, item_detail } = data);
-	$: {
-		if (item_detail != null) {
-			itemLoading = false;
-		}
-	}
-	$: title.set(item_detail.Name);
+	$: ({ data_center, item_id } = data);
+	
+	$: title.set(item_detail != null ? item_detail.Name : "");
 
 	async function onSearchItemSelect(selected_item_id) {
 		if (item_detail.id != selected_item_id) {
-			itemLoading = true;
+			getItemDetail(selected_item_id);
 			await loadMarketData(data_center, selected_item_id);
 		}
 	}
 
 	onMount(() => {
+		getItemDetail(item_id);
 		var unsubscribe_main_dc = main_dc.subscribe(async (dc) => {
-			goto(`/market/${dc}/${item_detail.id}`);
-			await loadMarketData(dc, item_detail.id);
+			goto(`/market/${dc}/${item_id}`);
+			await loadMarketData(dc, item_id);
 		});
-
 		return () => {
 			unsubscribe_main_dc();
 		};
 	});
+	function getItemDetail(id) {
+		itemLoading = true;
+		axios.get(`/api/item/${id}`).then((res) => {
+			item_detail = res.data;
+			itemLoading = false;
+		});
+	}
 	async function loadMarketData(dc, item_id) {
 		marketLoading = true;
 		var res = await axios.get(`/api/get_market_listing/${dc}/${item_id}`);
@@ -58,22 +62,26 @@
 <div>
 	<div class="grid grid-cols-12 gap-y-6 gap-x-4">
 		<div class="col-span-12 2xl:col-span-9 flex items-center">
-			<div class="relative">
+			<div class="relative h-[6rem] w-[6rem] min-h-[6rem] min-w-[6rem]">
 				<CardLoading show={itemLoading} />
-				<img
-					class="h-[6rem] w-[6rem] min-h-[6rem] min-w-[6rem]"
-					src={getItemImageUrl(item_detail.id)}
-					onError="this.src='/img/error.png';"
-					alt={item_detail.Name}
-				/>
+				{#if !itemLoading}
+					<img
+						class="w-full h-full"
+						src={getItemImageUrl(item_detail.id)}
+						onError="this.src='/img/error.png';"
+						alt={item_detail.Name}
+					/>
+				{/if}
 			</div>
 			<div class="ml-5 font-display">
-				<h1 class="text-white text-4xl font-black">
-					{item_detail.Name}
-				</h1>
-				<h1 class="text-gray-400 text-lg font-black">
-					{item_detail.Description !== null ? item_detail.Description : ""}
-				</h1>
+				{#if !itemLoading}
+					<h1 class="text-white text-4xl font-black">
+						{item_detail.Name}
+					</h1>
+					<h1 class="text-gray-400 text-lg font-black">
+						{item_detail.Description !== null ? item_detail.Description : ""}
+					</h1>
+				{/if}
 			</div>
 		</div>
 		<div

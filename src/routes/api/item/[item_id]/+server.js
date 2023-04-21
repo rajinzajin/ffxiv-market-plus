@@ -1,11 +1,8 @@
-//TODO check if this code used or unused
-// import { json } from "@sveltejs/kit";
-// import { processItemCSV } from "../../../../utils/item_csv_function";
-// import { filterArray } from "../../../../utils/array_object";
+import { json } from "@sveltejs/kit";
+import { getItem } from "../../../../../prisma/item_db";
 
-// /** @type {import('./$types').RequestHandler} */
-// export async function GET({ request, params }) {
-// 	const results = await processItemCSV();
-
-// 	return json(filterArray(results, { "#": `${params.item_id}` }));
-// }
+/** @type {import('./$types').RequestHandler} */
+export async function GET({ params }) {
+    const item_detail = await getItem(params.item_id)
+	return json(item_detail);
+}
