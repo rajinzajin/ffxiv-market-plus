@@ -2,6 +2,9 @@
 	import axios from "axios";
 	import { getItemImageUrl, getItemName } from "../utils/item_utils";
 	import { onMount } from "svelte";
+  import { goto } from "$app/navigation";
+  import { get } from "svelte/store";
+  import { main_dc } from "../stores/dc_world_stores";
 
 	export let item_id = -1;
 	let item_name;
@@ -33,6 +36,14 @@
 				<img class="w-full h-full" src={image_src} alt={item_id} />
 			{/if}
 		</div>
-		<h1 class="text-white ml-5 font-display font-bold text-2xl">{item_name}</h1>
+		<div class="ml-5">
+			<h1 class="text-white font-display font-bold text-2xl">{item_name}</h1>
+			<button
+            on:click={()=>goto(`market/${get(main_dc)}/${item_id}`)}
+				type="button"
+				class="text-white hover:border-blue-500 font-body text-base font-semibold mt-3 border-2 border-white rounded-lg px-5 py-1"
+				>Check Price</button
+			>
+		</div>
 	</div>
 {/if}
