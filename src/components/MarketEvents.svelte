@@ -47,7 +47,6 @@
 				}
 				m_events.push(bsonData);
 				m_events = m_events;
-				console.log(bsonData);
 			};
 			reader.readAsArrayBuffer(event.data);
 		};

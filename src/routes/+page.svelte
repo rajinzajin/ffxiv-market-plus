@@ -12,6 +12,7 @@
 	import CardLoading from "../components/CardLoading.svelte";
 	import { getWorld } from "../utils/world_function";
 	import ListingTable from "../components/ListingTable.svelte";
+  import ItemCard from "../components/ItemCard.svelte";
 	let recent_updates = [];
 	let isLoading = true;
 	let selectedEvent = { listings: [] };
@@ -44,7 +45,7 @@
 <div>
 	<div>
 		<div class="h-full">
-			<div class="grid grid-cols-12 gap-x-6">
+			<div class="grid grid-cols-12 gap-x-6 gap-y-8">
 				<div class="col-span-12 2xl:col-span-6">
 					<div class="w-full">
 						<div
@@ -100,7 +101,9 @@
 					</div> -->
 				</div>
 				<div class="col-span-12 2xl:col-span-6">
-					<ListingTable listings={selectedEventListings} />
+					<ItemCard item_id={selectedEvent.item}/>
+					<div class="h-[35rem]">
+						<ListingTable listings={selectedEventListings} /></div>
 				</div>
 			</div>
 		</div>

@@ -5,7 +5,7 @@
 </script>
 
 {#if listings.length > 0}
-	<div class="relative overflow-x-auto shadow-md sm:rounded-lg max-h-[40rem]">
+	<div class="relative overflow-x-auto shadow-md sm:rounded-lg h-full">
 		<table class="w-full font-display text-sm text-left text-gray-400">
 			<thead
 				class=" sticky top-0 bg-item text-sm font-body text-gray-700 uppercase dark:text-gray-400"
