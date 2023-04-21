@@ -73,7 +73,7 @@
 					<th scope="col" class="px-6 py-3"> Quality </th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody class="font-body">
 				{#each selectedPrices as item}
 					<tr
 						class="bg-primary text-base border-b border-gray-700 hover:bg-gray-600"
