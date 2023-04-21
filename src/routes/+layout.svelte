@@ -14,8 +14,8 @@
 	import { title } from "../stores/stores";
 	import { getDataCenter } from "../utils/data_center_function";
 	import { get } from "svelte/store";
+	import marketable_items_json from "../data/marketable_items.json"
 
-	export let data;
 	let worlds = getWorlds();
 
 	$: activeUrl = $page.url.pathname;
@@ -30,7 +30,7 @@
 		main_world.set(world);
 	}
 	onMount(() => {
-		marketable_items.set(data.marketable_items);
+		marketable_items.set(marketable_items_json);
 
 		var available_worlds = filterWorldsByIDs(
 			worlds,
