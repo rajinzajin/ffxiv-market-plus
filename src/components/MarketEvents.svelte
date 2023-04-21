@@ -56,7 +56,7 @@
 	});
 </script>
 
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg h-[45rem]">
 	<table class="w-full text-sm text-left">
 		<thead
 			class="text-2xl text-center font-display font-black text-white bg-item"
