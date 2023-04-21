@@ -6,6 +6,8 @@
 	import { getWorld } from "../utils/world_function.js";
 	
 	const max_array = 10;
+	export let onSelectEvent
+
 	let socket;
 	let lastWorldList = [];
 	let m_events = [];
@@ -67,7 +69,7 @@
 		</thead>
 		<tbody class="text-base font-body text-white">
 			{#each [...m_events].reverse() as m_event}
-				<tr class="bg-primary hover:bg-item cursor-pointer">
+				<tr on:click={()=>onSelectEvent(m_event)} class="bg-primary hover:bg-item cursor-pointer">
 					<td class="px-6 py-4 font-[100]"
 						><span class="text-[#fcff2e]">{m_event.listings.length}</span>
 						listings of

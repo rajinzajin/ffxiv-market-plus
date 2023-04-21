@@ -11,9 +11,15 @@
 	import { marketable_items } from "../stores/item_stores";
 	import CardLoading from "../components/CardLoading.svelte";
 	import { getWorld } from "../utils/world_function";
+  import ListingTable from "../components/ListingTable.svelte";
 	let recent_updates = [];
 	let isLoading = true;
+	let selectedEvent = { listings: [] };
+	let selectedEventListings = [];
+
 	title.set("Home");
+
+	$: selectedEventListings = selectedEvent.listings;
 
 	async function loadRecentUpdate() {
 		isLoading = true;
@@ -38,7 +44,7 @@
 <div>
 	<div>
 		<div class="h-full">
-			<div class="grid grid-cols-12">
+			<div class="grid grid-cols-12 gap-x-6">
 				<div class="col-span-12 2xl:col-span-6">
 					<div class="w-full">
 						<div
@@ -55,7 +61,7 @@
 						</div>
 					</div>
 					<div class="mt-7 w-full">
-						<MarketEvents />
+						<MarketEvents onSelectEvent={(val) => (selectedEvent = val)} />
 					</div>
 					<!-- <div class="mt-7 w-full">
 						<CardRefresh
@@ -94,7 +100,7 @@
 					</div> -->
 				</div>
 				<div class="col-span-6">
-					<!-- <MarketEvents /> -->
+					<ListingTable listings={selectedEventListings}/>
 				</div>
 			</div>
 		</div>
